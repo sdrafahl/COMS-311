@@ -1,0 +1,6 @@
+All:
+	pdflatex hw0.tex
+	rm hw0.aux
+	rm hw0.log
+Clean:
+	rm hw0.pdf
