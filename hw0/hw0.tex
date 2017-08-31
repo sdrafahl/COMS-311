@@ -57,5 +57,37 @@
     $ \newline \newline $
     (b) $ \forall_{n} \geq 4$, $ 2^{n} < n!$
     $ \newline \newline $
+    Basis: for n = 4 $ 2^{4} $ = 16 and 4! = 24
+    $ \newline \newline $
+    Inductive Hypothesis: $ \forall_{n} \geq 4$, $ 2^{n} < n!$ is true for n.
+    $ \newline \newline $
+    Inductive Step: $ 2^{n+1} $ = $ 2^{n} * 2 $. (n + 1)! = n! * (n + 1)
+    Since we know from the inductive hypothesis that $ \forall_{n} \geq 4$, $ 2^{n} < n!$
+    so for this to remain true the right side and the left would need to be multiplied by the same value
+    or the right would need to be multiplied by a greater value. The left is multiplied by 1 and the right is multiplied by
+    (n + 1). We know that n has to be 4 or greater so we know (n + 1) > 2 so therfore $ \forall_{n} \geq 4$, $ 2^{n} < n!$
+    for all natural numbers n.
+    $ \newline \newline $
+    2. Refer to the definition of Full Binary Tree from the notes. For a Full Binary Tree T, we
+    use n(T), h(T), i(T) and `(T) to refer to number of nodes, height, number of internal nodes
+    (non-leaf nodes) and number of leaves respectively. Note that the height of a tree with single
+    node is 1 (not zero). Using structural induction, prove the following:
+    $ \newline \newline $
+    (a) For every Full Binary Tree T, n(T) $ \geq $ h(T).
+    $ \newline \newline $
+    Basis: For a tree T with a single root node has a height 1. It has a single node and 1 = 1 so
+    for n(T) $ \geq $ h(T) is true.
+    $ \newline \newline $
+    Inductive Hypothesis: n(T) $ \geq $ h(T) is true is true for single root node tree T.
+    $ \newline \newline $
+    Inductive Step: Suppose you have a tree T that n(T) $ \geq $ h(T) is true. If we want to 
+    add more nodes to the tree and for it to also be a full binary tree we must add two nodes per leaf node. The root
+    node doesnt have a parent node so its child nodes are the first nodes to branch into two different child nodes.
+    So starting from the roots direct child node one layer difference thus $ (h(T) - 1)^{2} $ equals the number of 
+    leaf nodes. So increase the height of the tree by 1 would require two nodes for every leaf node thus for the tree with 
+    increased height $ T_{a} $. So h($T_{a}$) = h(T) + 1 and n($ T_{a} $) = n(T) * 2. So n(T) * 2 $ \geq $  h(T) + 1 is true
+    by the inductive hypothesis because we already know n(T) $ \geq $ h(T) and n(T) is being multiplied by 2 and  h(T) is
+    only added by 1. So the left side which is bigger is being increased more than the right so therfore n(T) $ \geq $ h(T)
+    is true for all complete binary search trees T.
 
     \end{document}
