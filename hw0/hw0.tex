@@ -1,20 +1,20 @@
 \documentclass[11pt]{article}
     %	options include 12pt or 11pt or 10pt
     %	classes include article, report, book, letter, thesis
-    
+
     \usepackage{amsmath}
     \usepackage{array}
     \setlength\extrarowheight{2pt}
     \usepackage{graphicx}
     \graphicspath{ {/home/shanedrafahl/coms331/hw0} }
-    
+
     \title{HW1}
     \author{Shane Drafahl}
     \date{30 August,2017}
-    
+
     \begin{document}
     \maketitle
-    
+
     1. Use mathematical induction to prove the following statements
     $ \newline \newline $
     (a)
@@ -22,36 +22,36 @@
     $ \forall_{n} \geq 1 $, $ \sum_{i = 1}^{n} i^{3} $ = $ ( \sum_{i = 1}^{n} i )^{2} $
     $ \newline \newline $
     $ \newline $
-    lemma: $ \sum_{i = 1}^{n} i $ = $ \frac{n^{2}}{2} $ + $ \frac{n}{2} $ where $ n \in \mathbb{N} $
+    lemma: $ \sum_{i = 1}^{n} i $ = $ \frac{n^{2}}{2} $ + $ \frac{n}{2} $ where $ n \in N $
     $ \newline $
-    Base Case: $ \sum_{i = 1}^{1} i $ = 1 = $ \frac{1^{2}}{2} $ + $ \frac{1}{2} $ 
+    Base Case: $ \sum_{i = 1}^{1} i $ = 1 = $ \frac{1^{2}}{2} $ + $ \frac{1}{2} $
     $ \newline $
-    Inductive Hypothesis: $ \sum_{i = 1}^{n} i $ = $ \frac{n^{2}}{2} $ + $ \frac{n}{2} $ 
+    Inductive Hypothesis: $ \sum_{i = 1}^{n} i $ = $ \frac{n^{2}}{2} $ + $ \frac{n}{2} $
     $ \newline $
-    Inductive Steps: 
+    Inductive Steps:
     $ \newline $
     Using induction on n
     $ \newline $
     $ \frac{(n + 1)^{2}}{2} + \frac{n + 1}{2} $ = $ \frac{n^{2}}{2} $ + $ \frac{3n}{2} $ + 1 =
     $ \frac{n^{2}}{2} + \frac{n}{2} $ + $ (n + 1) $
     $ \newline \newline $
-    So therefore the lemma is true for all natural numbers n greater than 1. 
-    $ \newline \newline $    
+    So therefore the lemma is true for all natural numbers n greater than 1.
+    $ \newline \newline $
     With the lemma we can solve the proof easier
     $ \newline \newline $
     Base Case: For n = 1 would be $ \sum_{i = 1}^{1} i^{3} $ = $ 1^{3} $ = 1.
-    $ ( \sum_{i = 1}^{1} i )^{2} $ = 1. 
+    $ ( \sum_{i = 1}^{1} i )^{2} $ = 1.
     $ \newline \newline $
-    Inductive Hypothesis: From the base n is true for 
+    Inductive Hypothesis: From the base n is true for
     $ \forall_{n} \geq 1 $, $ \sum_{i = 1}^{n} i^{3} $ = $ ( \sum_{i = 1}^{n} i )^{2} $
     $ \newline \newline $
-    Inductive Step: Using lemma we can re-write this to 
+    Inductive Step: Using lemma we can re-write this to
     $ (\frac{n^{2}}{2}  +  \frac{n}{2})^{2} $ = $ \sum_{i = 1}^{n} i^{3} $
     We will first add n+1, $( \frac{(n + 1)^{2}}{2}  +  \frac{(n + 1)}{2})^{2} $ = $ \frac{n^{4}}{4} $ +
     $ \frac{3n^{3}}{2} $ + $ \frac{13n^{2}}{4} $ + 3n + 1 .
-    Now we will do $ ( \frac{n^{2}}{2}  +  \frac{n}{2})^{2} $ + $ (n + 1)^{3} $ = 
+    Now we will do $ ( \frac{n^{2}}{2}  +  \frac{n}{2})^{2} $ + $ (n + 1)^{3} $ =
     $ \frac{n^{4}}{4} $ +
-    $ \frac{3n^{3}}{2} $ + $ \frac{13n^{2}}{4} $ + 3n + 1 . So therfore 
+    $ \frac{3n^{3}}{2} $ + $ \frac{13n^{2}}{4} $ + 3n + 1 . So therfore
     $ \forall_{n} \geq 1 $, $ \sum_{i = 1}^{n} i^{3} $ = $ ( \sum_{i = 1}^{n} i )^{2} $
     is true for all natural numbers for n greater than or equal to 1.
     $ \newline \newline $
@@ -75,19 +75,34 @@
     $ \newline \newline $
     (a) For every Full Binary Tree T, n(T) $ \geq $ h(T).
     $ \newline \newline $
-    Basis: For a tree T with a single root node has a height 1. It has a single node and 1 = 1 so
-    for n(T) $ \geq $ h(T) is true.
+    Basis: For a full binary tree T with a root node and two child leaf nodes 
+    $ n(T_{*}) = 3 $, and $ h(T_{*}) = 2 $ so $ n(T_{*}) \geq  h(T_{*}) $ is true.
     $ \newline \newline $
-    Inductive Hypothesis: n(T) $ \geq $ h(T) is true is true for single root node tree T.
+    Inductive Hypothesis: Suppose that for complete binary trees T,  n(T) $ \geq $ h(T) is true and n(T) = $ 2^{h(T)} - 1 $.
     $ \newline \newline $
-    Inductive Step: Suppose you have a tree T that n(T) $ \geq $ h(T) is true. If we want to 
-    add more nodes to the tree and for it to also be a full binary tree we must add two nodes per leaf node. The root
-    node doesnt have a parent node so its child nodes are the first nodes to branch into two different child nodes.
-    So starting from the roots direct child node one layer difference thus $ (h(T) - 1)^{2} $ equals the number of 
-    leaf nodes. So increase the height of the tree by 1 would require two nodes for every leaf node thus for the tree with 
-    increased height $ T_{a} $. So h($T_{a}$) = h(T) + 1 and n($ T_{a} $) = n(T) * 2. So n(T) * 2 $ \geq $  h(T) + 1 is true
-    by the inductive hypothesis because we already know n(T) $ \geq $ h(T) and n(T) is being multiplied by 2 and  h(T) is
-    only added by 1. So the left side which is bigger is being increased more than the right so therfore n(T) $ \geq $ h(T)
-    is true for all complete binary search trees T.
+    Recursive: Suppose we have two sub trees $ T_{1} , T_{2} $ that when combined with a node to connect them 
+    $ n_{0} + T_{1} + T_{2}$ = T. So to find the total number of nodes for n(T) = $n(T_{1}) +  n(T_{2}) + 1$ which because $ T_{1} = T_{2} $
+    n(T) = $n(T_{1}) +  n(T_{2})$ can be reduced to n(T) = $2n(T_{1}) + 1$ or by using the IH $ 2^{h(T_{1}) + 1} $. We know that the height of
+    T will increase by 1 so $ h(T) = h(T_{1}) + 1 $. So $  2^{h(T_{1}) + 1}  \geq  h(T)  $ or $  2^{h(T)}  \geq  h(T)  $ which is clearly true so for
+    all values of h(T) so therefore n(T) $ \geq $ h(T) is true for all complete binary trees T. 
+    $ \newline \newline $
+    (b) For every Full Binary Tree T, i(T) $ \ge $ h(T) - 1
+    $ \newline \newline $
+
+    (c) For every Full binary Tree T, $ l(T) = (n(T) + 1)/2 $
+    $ \newline \newline $
+    Basis: for a full binary tree $T^{2} $ with a single root node and two children has 2 leaf nodes and 3 alltogether.
+    so (3 + 1)/2 = 2, so therefore $ l(T^{3}) = (n(T^{3}) + 1)/2 $ is true for the basis.
+    $ \newline \newline $
+    Inductive Hypothesis: We assume $ l(T) = (n(T) + 1)/2 $ is true and that the n(T) = $ 2^{h(T)} - 1 $.
+    $ \newline \newline $
+    Recursive Step: Suppose we have $ T_{1} $ and $ T_{2} $ full binary trees where 
+    $ l(T_{1, 2}) = (n(T_{1, 2}) + 1)/2 $ . If we combined $ T_{1} $ and $ T_{2} $ into a full tree T then 
+    the leaves of the new tree would be
+    $ \frac{(n(T^{1}) + 1)}{2} $ + $ \frac{(n(T^{2}) + 1)}{2} $.
+    Since $ T_{1} $ and $ T_{2} $ are equivilant we can say $ n(T_{1}) + 1 $.
+    With our IH $ n(T_{1}) + 1 $ = $ 2^{h(T_{1}) - 1} $. also from the IH
+    we can say that IH of $ l(T) = 2^{h(T) - 1} $. Because $ h(T) = h(T_{1}) + 1 $ 
+    $ l(T) = 2^{h(T) - 1} =  2^{h(T_{1})} $. So therefore $ l(T^{3}) = (n(T^{3}) + 1)/2 $ is true for all full binary trees T.
 
     \end{document}
