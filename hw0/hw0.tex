@@ -145,12 +145,13 @@
     so therefore m(a[i]) or that a[i] is the greatest max for a[0],a[1],...a[i] for all
     natural numbers i where $ 0 \leq i \leq n-1 $.
     $ \newline \newline $
-    4. Let a be an array of size n indexed by 0, 1, ... n − 1. Now consider Bubble sort pseudo code.
+    4. Let a be an array of size n indexed by 0, 1, ... n - 1. Now consider Bubble sort pseudo code.
     $ \newline \newline $
     for j in the range [0, n-1]
     $ \newline \newline $
     for i in the range [0, n-j-2]
-    if a[i] > a[i+1]
+    $ \newline \newline $
+    if a[i] $>$ a[i+1]
     $ \newline \newline $
     swap(a[i], a[i+1])
     $ \newline \newline $
@@ -159,19 +160,37 @@
     $ \newline \newline $
     a[n - j] $ \leq $ a[n - j + 1] $ \leq $ a[n - 1] 
     $ \newline \newline $
-    a[n - j], a[n - j + 1],... a[n - 1] are the j largest elements of the array
+    a[n - j], a[n - j + 1], ... a[n - 1] are the j largest elements of the array
     $ \newline \newline $
-    Basis: Using induction on j if j = 2 then $ a[n - 2] \leq a[n - 1] \leq a[n - 1] $
-    obviously $ a[n - 1] \leq a[n - 1] $. For arrays greater than 1 element.
-    For the prior iteration where j = 1 then the inner for loop would have went from
-    0 to n-1. For the iner loop when i = n - 2 if a[n - 2] $>$ a[n - 1] then 
-    it would swap and put the greater value in a[n - 1] otherwise the greater value would
-    already be there. So a[n - 2] $<$ a[n - 1]. 
+    Basis: Using induction on j we assume j = 0, a[n + 1] or a[n] does not exist so it is true
+    because the implication is false therefore the expression is true.
     $ \newline \newline $
-    Inductive Hypothesis: Assume that a[n - j] $ \leq $ a[n - j + 1] $ \leq $ a[n - 1] is true.
+    Inductive Hypothesis: With the conditions held in the basis we will assume for iteration j
+    that the properties.
     $ \newline \newline $
-    Inductive Step: Now we must prove for j + 1 so
-    a[n - j + 1] $ \leq $ a[n - j + 2] $ \leq $ a[n - 1]. We know that j works
-    so during the jth iteration 
+    a[n - j] $ \leq $ a[n - j + 1] $ \leq $ a[n - 1] 
+    $ \newline \newline $
+    a[n - j], a[n - j + 1], ... a[n - 1] are the j largest elements of the array
+    $ \newline \newline $
+    Inductive Step: We need to prove the property for
+    a[n - j - 1] $ \leq $ a[n - j] $ \leq $ a[n - 1] and
+    a[n - j - 1], a[n - j], ... a[n - 1] are the j largest elements of the array.
+    By the IH we already know that $ a[n - j] \leq a[n - 1] $. For the j+1 iteration and by 
+    the def of problem 3 that when the iner loop reaches iteration n-j-1, n-j-1 will be the greatest value 
+    of every index before it. The for loop as not altered this value before this point so it was the greatest
+    value at the beginning of the iteraiton. We also know from the IH that a[n - j], a[n - j + 1], and a[n -1]
+    are the greatest values so we know that a[n - j - 1] $ \leq $ a[n - j]. We know that a[n - j - 1] is
+    greater than anything before it and we know that $ a[n - j - 1] \leq a[n - j] \leq a[n - 1] $ so we know that
+    a[n - j - 1], a[n - j], a[n - 1] are the largets elements of the array. Therefore 
+    $ \newline \newline $
+    a[n - j] $ \leq $ a[n - j + 1] $ \leq $ a[n - 1] 
+    $ \newline \newline $
+    a[n - j], a[n - j + 1], ... a[n - 1] are the j largest elements of the array
+    $ \newline \newline $
+    are true for all iterations of j.
+    $ \newline \newline $
+    5. This proof is incorrect because it assumes that $ c_{m+1} $ = $ \forall_{a} \in S_{2} $. 
     
-\end{document}
+
+
+    \end{document}
