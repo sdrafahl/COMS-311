@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1504165547 "/home/shane/coms311/hw0/hw0.tex" "hw0.pdf" "hw0" 1504165547
+["pdflatex"] 1504594553 "/home/shane/coms311/hw0/hw0.tex" "hw0.pdf" "hw0" 1504594553
   "/etc/texmf/web2c/texmf.cnf" 1504055715 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/shane/coms311/hw0/hw0.tex" 1504165547 4993 5eb6f27fa8dcd3e3af82c86a0c63b783 ""
+  "/home/shane/coms311/hw0/hw0.tex" 1504594553 9947 aea2c4841af1b89433c1629e7392f67e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -27,6 +27,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
   "/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1303254447 7324 11d14f318d865f420e692d4e6c9c18c3 ""
@@ -58,9 +59,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503347518 31075 dbb81bd39d798acf14cc121a151f7fe7 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1504055831 1346346 7f2b8b715a9ddb095afe3697a6ba02b5 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1504055800 3822874 3e701c31761e215abc80c59bec5f5c21 ""
-  "hw0.aux" 1504165547 8 a94a2480d3289e625eea47cd1b285758 ""
-  "hw0.tex" 1504165547 4993 5eb6f27fa8dcd3e3af82c86a0c63b783 ""
+  "hw0.aux" 1504594553 8 a94a2480d3289e625eea47cd1b285758 ""
+  "hw0.tex" 1504594553 9947 aea2c4841af1b89433c1629e7392f67e ""
   (generated)
-  "hw0.log"
-  "hw0.pdf"
   "hw0.aux"
+  "hw0.pdf"
+  "hw0.log"

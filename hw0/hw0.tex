@@ -161,5 +161,17 @@
     $ \newline \newline $
     a[n - j], a[n - j + 1],... a[n - 1] are the j largest elements of the array
     $ \newline \newline $
-
-    \end{document}
+    Basis: Using induction on j if j = 2 then $ a[n - 2] \leq a[n - 1] \leq a[n - 1] $
+    obviously $ a[n - 1] \leq a[n - 1] $. For arrays greater than 1 element.
+    For the prior iteration where j = 1 then the inner for loop would have went from
+    0 to n-1. For the iner loop when i = n - 2 if a[n - 2] $>$ a[n - 1] then 
+    it would swap and put the greater value in a[n - 1] otherwise the greater value would
+    already be there. So a[n - 2] $<$ a[n - 1]. 
+    $ \newline \newline $
+    Inductive Hypothesis: Assume that a[n - j] $ \leq $ a[n - j + 1] $ \leq $ a[n - 1] is true.
+    $ \newline \newline $
+    Inductive Step: Now we must prove for j + 1 so
+    a[n - j + 1] $ \leq $ a[n - j + 2] $ \leq $ a[n - 1]. We know that j works
+    so during the jth iteration 
+    
+\end{document}
