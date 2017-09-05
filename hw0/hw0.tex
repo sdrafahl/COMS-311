@@ -78,31 +78,88 @@
     Basis: For a full binary tree T with a root node and two child leaf nodes 
     $ n(T_{*}) = 3 $, and $ h(T_{*}) = 2 $ so $ n(T_{*}) \geq  h(T_{*}) $ is true.
     $ \newline \newline $
-    Inductive Hypothesis: Suppose that for complete binary trees T,  n(T) $ \geq $ h(T) is true and n(T) = $ 2^{h(T)} - 1 $.
+    Inductive Hypothesis: Suppose that for complete binary trees T,  n(T) $ \geq $ h(T) is true.
     $ \newline \newline $
-    Recursive: Suppose we have two sub trees $ T_{1} , T_{2} $ that when combined with a node to connect them 
-    $ n_{0} + T_{1} + T_{2}$ = T. So to find the total number of nodes for n(T) = $n(T_{1}) +  n(T_{2}) + 1$ which because $ T_{1} = T_{2} $
-    n(T) = $n(T_{1}) +  n(T_{2})$ can be reduced to n(T) = $2n(T_{1}) + 1$ or by using the IH $ 2^{h(T_{1}) + 1} $. We know that the height of
-    T will increase by 1 so $ h(T) = h(T_{1}) + 1 $. So $  2^{h(T_{1}) + 1}  \geq  h(T)  $ or $  2^{h(T)}  \geq  h(T)  $ which is clearly true so for
-    all values of h(T) so therefore n(T) $ \geq $ h(T) is true for all complete binary trees T. 
+    Recursive: Suppose we have two sub trees $ T_{1} , T_{2} $, these threes are identical full binary trees and when we combine them together with an addictional node 
+    $ T_{1} + T_{2} N_{1} $ = T, $ n(T_{1,2})  \geq  h(T_{1,2}) $. First we will compare $ n(T_{1}) + n(T_{2}) + 1 \geq  h(T_{1,2}) + 1 $. $ n(T_{1}) + n(T_{2}) + 1 $ = n(T)
+    and h(T) = $ h(T_{1,2}) $ + 1. We can reduce it down to $ 2n(T_{1}) + 1 \geq  h(T_{1}) + 1 $ .... $ 2n(T_{1}) \geq  h(T_{1}) $. By the IH we know that $ n(T_{1}) \geq  h(T_{1}) $
+    is true so $ 2n(T_{1}) \geq  h(T_{1}) $ must also be true so therfore n(T) $ \geq $ h(T) is true for all full binary trees T.
     $ \newline \newline $
     (b) For every Full Binary Tree T, i(T) $ \ge $ h(T) - 1
     $ \newline \newline $
-
+    Basis: For a full binary tree $ T_{*} $ with a single root node and two child leaf nodes. 
+    $ i(T_{*}) $ = 1 and $ h(T_{*}) - 2 $ = 1 so therfore $ i(T_{*})  \ge  h(T_{*}) - 1 $
+    $ \newline \newline $
+    Inductive Hypothesis: Assume that i(T) $ \ge $ h(T) - 1 is true.
+    $ \newline \newline $
+    Recursive: We will take two idential full binary trees $ T_{1,2} $. If we  
+    combined them with a single node to connect them into a new full binary tree T
+    then to find all the internal nodes of T we would do $ i(T_{1}) + i(T_{2}) + 1 \ge h(T) - 1 $. 
+    The height of T is one more than $ T_{1} $ so $ i(T_{1}) + i(T_{2}) + 1 \ge h(T_{1}) $. This can also 
+    be reduced down to $ i(2T_{1}) + 1 \ge h(T_{1}) - 1 $. By the IH $ i(T_{1}) + 1 \ge h(T_{1}) - 1 $ 
+    so $ i(2T_{1}) + 1 \ge h(T_{1}) - 1 $ is also true and therfore i(T) $ \ge $ h(T) - 1 is true
+    for all complete binary trees T.
+    $ \newline \newline $
     (c) For every Full binary Tree T, $ l(T) = (n(T) + 1)/2 $
     $ \newline \newline $
     Basis: for a full binary tree $T^{2} $ with a single root node and two children has 2 leaf nodes and 3 alltogether.
     so (3 + 1)/2 = 2, so therefore $ l(T^{3}) = (n(T^{3}) + 1)/2 $ is true for the basis.
     $ \newline \newline $
-    Inductive Hypothesis: We assume $ l(T) = (n(T) + 1)/2 $ is true and that the n(T) = $ 2^{h(T)} - 1 $.
+    Inductive Hypothesis: We assume $ l(T) = (n(T) + 1)/2 $ is true.
     $ \newline \newline $
-    Recursive Step: Suppose we have $ T_{1} $ and $ T_{2} $ full binary trees where 
-    $ l(T_{1, 2}) = (n(T_{1, 2}) + 1)/2 $ . If we combined $ T_{1} $ and $ T_{2} $ into a full tree T then 
-    the leaves of the new tree would be
-    $ \frac{(n(T^{1}) + 1)}{2} $ + $ \frac{(n(T^{2}) + 1)}{2} $.
-    Since $ T_{1} $ and $ T_{2} $ are equivilant we can say $ n(T_{1}) + 1 $.
-    With our IH $ n(T_{1}) + 1 $ = $ 2^{h(T_{1}) - 1} $. also from the IH
-    we can say that IH of $ l(T) = 2^{h(T) - 1} $. Because $ h(T) = h(T_{1}) + 1 $ 
-    $ l(T) = 2^{h(T) - 1} =  2^{h(T_{1})} $. So therefore $ l(T^{3}) = (n(T^{3}) + 1)/2 $ is true for all full binary trees T.
+    Recursive Step: We will take two idential full binary trees $ T_{1,2} $. If we  
+    combined them with a single node to connect them into a new full binary tree T.
+    By the IH $ l(T_{1,2}^{3}) = (n(T_{1,2}^{3}) + 1)/2 $. To find the number of leaves
+    for T we can add these together so $ \frac{n(T_{1}) + 1}{2} $ + $ \frac{n(T_{2}) + 1}{2} $.
+    We can simpllify this to because $ T_{1} $ = $ T_{2} $ , $ n(T_{1}) + 1 $ = l(T). 
+    Now me must prove this is correct. We know that $ l(T) = (n(T) + 1)/2 $ so we will 
+    expand n(T) in terms of $ T_{1} $ so $ l(T) = (2n(T_{1}) + 1 + 1)/2 $ ... l(T) = $ n(T_{1}) + 1 $.
+    So because we were able to prove for T with two sub trees therefore $ l(T) = (n(T) + 1)/2 $ is true for 
+    all full binary trees T.
+    $ \newline \newline $
+    3. Let a be an array of size n indexed by 0, 1, ... n − 1. Consider the following code (inner loop
+    of Bubble Sort)
+    $ \newline \newline $
+    for i in the range [0, n-2]
+    $ \newline $
+        if (a[i] $>$ a[i+1])
+        $ \newline $
+            swap (a[i], a[i+1]); //swap the values of a[i] and a[i+1]
+
+    $ \newline \newline $
+    Show the following using induction :“ At the start of ith iteration of the loop, a[i] is the
+    maximum among a[0], a[1], ... a[i].
+    $ \newline \newline $
+    Basis: for a[0] there are no values index in a below 0 so therfore a[i] where i = 0 
+    the start of the iteration of i is the maximum.
+    $ \newline \newline $
+    inductive Hypothesis: Assume that a[i] is the greatest max value during the iteration 
+    and that m(a[i]) is either true or false if a[i] is greatest during the ith iteration.
+    $ \newline \newline $
+    Inductive Step: By the IH assume that m(a[i]) is true so. If during the ith interation 
+    a[i] $>$ a[i+1] then a[i+1] = a[i] in that case for m(a[i+1]) a[i+1] $>$ a[i] and m(a[i]) is true by
+    the inductive hypothesis so therefore for that that m(a[i+1]) is true. The other
+    case is that a[i+1] $>$ a[i] during the ith iteration. In that case its the same
+    where m(a[i]) is already true so starting at the i+1 iteration we already know a[i]
+    is greater than anything before it and the value after a[i], is greater a[i+1] $>$ a[i]
+    so therefore m(a[i]) or that a[i] is the greatest max for a[0],a[1],...a[i] for all
+    natural numbers i where $ 0 \leq i \leq n-1 $.
+    $ \newline \newline $
+    4. Let a be an array of size n indexed by 0, 1, ... n − 1. Now consider Bubble sort pseudo code.
+    $ \newline \newline $
+    for j in the range [0, n-1]
+    $ \newline \newline $
+    for i in the range [0, n-j-2]
+    if a[i] > a[i+1]
+    $ \newline \newline $
+    swap(a[i], a[i+1])
+    $ \newline \newline $
+    Use mathematical induction to show: At the start of jth iteration of outer loop the following
+    conditions hold:
+    $ \newline \newline $
+    a[n - j] $ \leq $ a[n - j + 1] $ \leq $ a[n - 1] 
+    $ \newline \newline $
+    a[n - j], a[n - j + 1],... a[n - 1] are the j largest elements of the array
+    $ \newline \newline $
 
     \end{document}
