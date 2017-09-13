@@ -92,7 +92,11 @@
     $ \newline \newline $
     (f) $ 2^{2^{n + 1}} \in O(2^{2^{n}}) $
     $ \newline \newline $
-    To disprove this $ 0 \leq 2^{2^{n + 1}} \leq 2^{2^{n}} $
+    To disprove this $ 0 \leq 2^{2^{n + 1}} \leq 2^{2^{n}} * C $ we will use proof by contradiction and
+    assume this is true and that C is as larg as it needs to be. If we increase n by 1 we get 
+    $ 0 \leq 2^{2^{n} * 4} \leq 2^{2^{n} * 2} * C $. $ 2^{2^{n} * 4} $ increases by more than
+    $ 2^{2^{n} * 2} * C $ so C would need to be increased but this is a contradiction so therefore 
+    by proof of contradiction $ 2^{2^{n + 1}} \in O(2^{2^{n}}) $ is not true.
 
 
 
