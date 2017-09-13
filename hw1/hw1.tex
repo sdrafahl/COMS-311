@@ -53,6 +53,48 @@
     overtake and be a greater value. The other case is that $ a^{n} \leq n! $ for some n then it wont matter what
     c is because n! will be increasing at a greater rate. So $ 0 \leq a^{n + 1} \leq c * n! * (n + 1) $. $ a^{n + 1} $
     is true and therefore $ \forall_{a} \geq 1 $ : $ a^{n} \in O(n!) $ is true.
+    $ \newline \newline $
+    (c) $ \forall_{a} \geq $ : $ 2^{n + a} \in O(2^{n}) $
+    $ \newline \newline $
+    To prove for big oh We must prove for $ 0 \leq 2^{n + a} \leq c * 2^{n} $. 
+    We can reduce this to $ 0 \leq 2^{n}2^{a} \leq c * 2^{n} $. Because for whatever a is
+    we can say that c = $ 2^{a} $ for this value of a so $ 0 \leq 2^{n}2^{a} \leq 2^{a}2^{n} $.
+    So obviously this is true You cannot produce a negative number from the exponents either.
+    So therefore $ \forall_{a} \geq $ : $ 2^{n + a} \in O(2^{n}) $ is true for all a and n.
+    $ \newline \newline $
+    (d) $ \forall_{a} > 1 $ : $ (f(n) \in O(log_{2}n)) => (f(n) \in O(log_{a}n)) $
+    $ \newline \newline $
+    To prove that this is wrong I will use proof of contradiction. 
+    Assuming that $ \forall_{a} > 1 $ : $ (f(n) \in O(log_{2}n)) => (f(n) \in O(log_{a}n)) $
+    Then either $ f(n) \leq log_{a}(n) \leq log_{2}(n) $ or 
+    $ f(n) \leq log_{2}(n) \leq log_{a}(n) $. 
+    For $ f(n) \leq log_{2}(n) \leq log_{a}(n) $ a could equal a number greater than 2 and that would
+    be a contradiction $ log_{2}(n) \leq log_{3}(n) $ if n is greater than 1.
+    Otherwise $ f(n) \leq log_{1}(n) \leq log_{2}(n) $. For this case if f(n) = $ log_{3}(n) $ 
+    then for $ log_{a}(n) $, a would have to be between 3 and 2 and a contradiction because 
+    it cannot be all values. So therefore $ \forall_{a} > 1 $ : $ (f(n) \in O(log_{2}n)) => (f(n) \in O(log_{a}n)) $
+    is not true.
+    $ \newline \newline $
+    (e) $ 2^{n} \in O(n^{log^{2}n}) $
+    $ \newline \newline $
+    To disprove this we will use proof of contradiction we will assume that $ 2^{n} \in O(n^{log^{2}n}) $
+    is true so $ 0 \leq 2^{n} \leq c * n^{log(n)^{2}} $. If n = 5 then $ 2^{5} $ = 32, and $ 5^{log(5)^{2}} $ = 2.19527...
+    So C would need to be 14.5767 or greater for this case. Since we assume it is true we also 
+    assume that there is some C for that multiplied by $ n^{log(n)^{2}} $ that would be greater than
+    $ 2^{n} $ for all values of n. We will assume that $ 0 \leq 2^{n} \leq c_{1} * n^{log(n)^{2}} $ is
+    true where $ c_{1} $ would not need to be increased because its true for all values of n. If we 
+    increase n by 1 then $ 2^{n + 1} = 2^{n} * 2 $ would increase 2 multiplied by $ 2^{n} $.
+    On the right side $ (n + 1)^{log(n + 1)^{2}} $. For an increase of 1 for log(n) n would 
+    have to be increase by log(n * 10) so log(n + 1) would increase less than 1 from log(n). So 
+    $ (n + 1)^{log(n + 1)^{2}} $ would not double in size meaning that C would have to increase but
+    by contradiction because we assumed that C was the greatest value it needed to be 
+    $ 2^{n} \in O(n^{log^{2}n}) $ is not true.
+    $ \newline \newline $
+    (f) $ 2^{2^{n + 1}} \in O(2^{2^{n}}) $
+    $ \newline \newline $
+    To disprove this $ 0 \leq 2^{2^{n + 1}} \leq 2^{2^{n}} $
+
+
 
 
     \end{document}
