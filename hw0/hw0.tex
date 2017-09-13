@@ -178,7 +178,7 @@
     By the IH we already know that $ a[n - j] \leq a[n - 1] $. For the j+1 iteration and by 
     the def of problem 3 that when the iner loop reaches iteration n-j-1, n-j-1 will be the greatest value 
     of every index before it. The for loop as not altered this value before this point so it was the greatest
-    value at the beginning of the iteraiton. We also know from the IH that a[n - j], a[n - j + 1], and a[n -1]
+    value at the beginning of the iteraiton. We also know from the IH that a[n - j], a[n - j + 1], and a[n - 1]
     are the greatest values so we know that a[n - j - 1] $ \leq $ a[n - j]. We know that a[n - j - 1] is
     greater than anything before it and we know that $ a[n - j - 1] \leq a[n - j] \leq a[n - 1] $ so we know that
     a[n - j - 1], a[n - j], a[n - 1] are the largets elements of the array. Therefore 

@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+    %	options include 12pt or 11pt or 10pt
+    %	classes include article, report, book, letter, thesis
+
+    \usepackage{amsmath}
+    \usepackage{array}
+    \setlength\extrarowheight{2pt}
+    \usepackage{graphicx}
+    \graphicspath{ {/home/shanedrafahl/coms331/hw0} }
+
+    \title{HW2}
+    \author{Shane Drafahl}
+    \date{30 August,2017}
+
+    \begin{document}
+    \maketitle
+
+    1. Prove or disprove the following
+    $ \newline \newline $
+    (a) $ 5n^{2} - 2n + 26 \in O(n^{2}) $
+    $ \newline \newline $
+    We will prove this with the def of big oh.
+    The def of $ O(n^{2}) $ is there exists positive constants c and $ n_{0} $ such
+    that 0 $ \leq $ f(n) $ \leq $ c * g(n) for all $ n_{0} \leq n $. In this case 
+    f(n) = $ 5n^{2} - 2n + 26 $ and g(n) = $ n^{2} $. We can divide both sides by
+    $ n^{2} $ and we can go from $ 0 \leq 5n^{2} - 2n + 26 \leq c * n^{2} $ to
+    $ 0 \leq \frac{24}{n} + 5 \leq c $. $ \frac{24}{n = 1} + 5 $ = 29 and if
+    $ f_{1}(n) = \frac{24}{n} + 5 $ then $f_{1}(n + 1) \leq f_{1}(n) $ because as 
+    natural number n increases it increases the denominator. C could be 29
+    or greater and $ 0 \leq 5n^{2} - 2n + 26 \leq c * n^{2} $ would be true so therefore
+    $ 5n^{2} - 2n + 26 \in O(n^{2}) $ because the property is true.
+    $ \newline \newline $
+    (b) $ \forall_{a} \geq 1 $ : $ a^{n} \in O(n!) $
+    $ \newline \newline $
+    We will prove this with def of big oh.
+    So the given statement is equivalent to  $ 0 \leq a^{n} \leq c * n! $. Using induction
+    we can prove it.
+    $ \newline \newline $
+    Basis: Starting at n = 1 because the performance of an algorithm with n = 0 is irrelevent. 
+    $ 0 \ leq a \leq c $ is true because for any a c can be a constant of c  = (a + 1).
+    Inductive Hypothesis: Suppoose $ 0 \leq a^{n} \leq c * n! $ is true.
+    $ \newline \newline $
+    Inductive Step:
+    We need to prove $ 0 \leq a^{n + 1} \leq c * n! * (n + 1) $. $ a^{n + 1} $ increases by
+    some a multiplied by $ a * a^{n} $ from the IH. While the right side $ c * n! * (n + 1) $ from the
+    IH is multiplied by (n + 1) for $ c * n! * (n + 1) $. In this case of a, n increases meaning at some point
+    it will increase by more when a $<$ n. So the right side is increasing at a faster rate
+    then the left side of the comparison. This means that there is a point where $ n! \leq a^{n} $ for some a 
+    for a given range of n. We can just say $ c = a^{n} = n! $ for the n where they equal. So for 
+    $ 0 \leq a^{n + 1} \leq c * n! * (n + 1) $ if $ a^{n} > n! $ then the constant c multiplied by 
+    $ n! * c $ will be greater than or equal to $ a^{n} $ because c is equal to the the value 
+    at which n! overtakes $ a^{n} $ so if for n! n is beyond the point where n! overtakes than it will already
+    overtake and be a greater value. The other case is that $ a^{n} \leq n! $ for some n then it wont matter what
+    c is because n! will be increasing at a greater rate. So $ 0 \leq a^{n + 1} \leq c * n! * (n + 1) $. $ a^{n + 1} $
+    is true and therefore $ \forall_{a} \geq 1 $ : $ a^{n} \in O(n!) $ is true.
+
+
+    \end{document}
