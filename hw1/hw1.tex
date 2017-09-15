@@ -97,7 +97,16 @@
     $ 0 \leq 2^{2^{n} * 4} \leq 2^{2^{n} * 2} * C $. $ 2^{2^{n} * 4} $ increases by more than
     $ 2^{2^{n} * 2} * C $ so C would need to be increased but this is a contradiction so therefore 
     by proof of contradiction $ 2^{2^{n + 1}} \in O(2^{2^{n}}) $ is not true.
-
+    $ \newline \newline $
+    2. With respect to the input n, what is the worst-case time complexity of the following algorithm?
+    $ \newline \newline $
+    First we will find in terms of n how many times the outer loop will go. Its going to start with 1
+    and go to $ n^{2} $ so we know the outer loop is $ n^{2} $ time complexity. The inner loop
+    Takes the value of j and takes the ceil of it. We know that every time it id dividing by 2 untill it reaches 1.
+    We know that then $ \frac{j}{2^{y}} $ where y is the total number of times the iner loop loops.
+    This is also aproximate to $ 2^{y} $ = j or $ log_{2}(j) $ = y. So we know that the loop will go
+    for $ n^{2} * log_{2}(j) $. We also know that j will reach n so the worst-case time complexity is
+    $ O(n^{2}log_{2}(n)) $.
 
 
 
