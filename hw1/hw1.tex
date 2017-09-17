@@ -7,7 +7,7 @@
     \setlength\extrarowheight{2pt}
     \usepackage{graphicx}
     \graphicspath{ {/home/shanedrafahl/coms331/hw0} }
-
+    
     \title{HW2}
     \author{Shane Drafahl}
     \date{30 August,2017}
@@ -98,7 +98,7 @@
     $ 2^{2^{n} * 2} * C $ so C would need to be increased but this is a contradiction so therefore 
     by proof of contradiction $ 2^{2^{n + 1}} \in O(2^{2^{n}}) $ is not true.
     $ \newline \newline $
-    2. With respect to the input n, what is the worst-case time complexity of the following algorithm?
+    2. (a) With respect to the input n, what is the worst-case time complexity of the following algorithm?
     $ \newline \newline $
     First we will find in terms of n how many times the outer loop will go. Its going to start with 1
     and go to $ n^{2} $ so we know the outer loop is $ n^{2} $ time complexity. The inner loop
@@ -107,7 +107,82 @@
     This is also aproximate to $ 2^{y} $ = j or $ log_{2}(j) $ = y. So we know that the loop will go
     for $ n^{2} * log_{2}(j) $. We also know that j will reach n so the worst-case time complexity is
     $ O(n^{2}log_{2}(n)) $.
-
-
+    $ \newline \newline $
+    (b) Consider the following method that computes the median of an array of consisting of 
+    distinct integers.
+    $ \newline \newline $
+    The best-case time complexity of the algorithm will be the outer for loop is only called once.
+    In order for this to happen the inner for loop needs to increase r to n/2 or (n+1)/2 the first time it
+    enters the for loop to loop. So The best case is that the first element in the array a[0]
+    is larger than (n+1)/2 or n/2 elements from the array. That way the inner for loop will 
+    end exactly when r equals n/2 or (n+1)/2. The inner for loop is going to loop around 
+    n times and the outer for loop will loop around once. So the big oh notation is
+    $ O(n) $ for best case.
+    $ \newline \newline $
+    For the worst case time complexity we assume that the outer loop is going to loop over the entire 
+    array and the inner loop is also going to loop over the entire array every time and either it will 
+    return x on the final loop for exit the algorithm without returning x. To get the worst-time
+    complexity we would give it an array where the value that is greater than (n+1)/2 or n/2 elements
+    of the array is at a[n-1]. So the outer loop will loop n times and the inner loop will loop n times
+    also so the big oh notation is $ O(n^{2}) $.
+    $ \newline \newline $
+    3. Given an array A containing 0s and 1s, such that all the 0s appear in the array before all
+    the 1s. Write an algorithm with worst-case time complexity O(log(n)), which finds the
+    smallest index i such that A[i] = 1. Describe your algorithm, and analyze its worst-case time
+    complexity.
+    $ \newline \newline $
+    In general the algorithm the will logarithmically search the array by searching for the middle
+    of the algorithm and then depending on if there is a 1 to the right of the center of the algorithm
+    it will either search the right side of the array or the left side of the array and then 
+    either search the left or right side of those sub-arrays and ect untill the 1 is found. 
+    The algorithm is as follows.
+    $ \newline \newline $
+    $ \includegraphics{algo} $
+    For the worst time complexity we know that lines between left = 0 and
+    right = array.length - 1 are atomic. The while loop will go untill array[left] equals 0 and
+    array[left + 1] equals 1. We will say that n is the length of the array given. 
+    The variable left is the value of the index in the middle of the array.
+    If the 1 is on the right side of the array the algorithm looks in the middle of the right side or 
+    vice versa. This means that essentialy it is dividing the array by 2 everytime it searches. The worst
+    case is where it divides the array of size n untill the sub array is 1. So 
+    $ \frac{n}{2^{y}} $ = 1 where y is some natural number. This is also equal to
+    $ 2^{y} = n $ or $ log_{2}(n) = y $. So therefore the time complexity for worst case is 
+    $ 7 + log_{2}(n) = O(log(n)) $.
+    $ \newline \newline $
+    4. Assume that you are given an algorithm named Merge that can merge two sorted integer
+    arrays of size n and m to generate a new sorted array of size n + m in O(m + n) time. Your
+    task is to use Merge merge k sorted integer arrays each containing n elements, and output a
+    single sorted array. Consider the following algorithm for this task. Let A1, A2, ... , Ak be the
+    input arrays.
+    $ \newline \newline $
+    For the given algorithm the for loop will loop around k times.
+    the inner for loop takes $ O(m + n) $ time. This means that
+    it takes k * (m + n) iterations for the algorithm. If we assume that 
+    n is the size of array A and m is the size of some array $ A_{1}, A_{2},...,A_{k} $.
+    If the size of array $ k \leq m + n $ then it could take $ k^{2} $ iterations
+    as long as the arrays merged are the same size as the total number of arrays or greater than. 
+    If k $ < $ m + n then x(m + n) = k. So therefore $ k * (m + n) $ = $ O(k^{2}) $. 
+    This is true because $ 0 \leq k * xk \leq c * k^{2} $ where c = x and x * k = (m + n).
+    $ \newline \newline $
+    5. Consider the following two methods that compute the greatest common divisor of two integers.
+    $ \newline \newline $
+    (a) gcd took 9797 milliseconds and gcdfast took 0 milliseconds.
+    $ \newline \newline $
+    (b) gcd took 16225 milliseconds and gcdfast took 0 milliseconds.
+    $ \newline \newline $
+    (c): Suppose we have inputs a,b where a $ > $ b.
+    We then will look at the next recursive step where 
+    the inputs will be (b ,c). c = a mod b. One additional step after this
+    and the inputs will be (c,d) and d = b mod c. This means 
+    that b = xc + d where x is some natural number. We know that
+    a $ > $ b. So this means that a $ > $ xc + d. We can get 
+    (a + b) $ > $ x(c + d) + b .... (a + b) $ > $ x2(c + d). So 
+    for each iteration the value is decreased by half or more.
+    For digits a and b that are represented by n digits at least
+    each iteration there will be n-1 digits at most for
+    the second iteration. The algorithm ends when b equals 0
+    so the algorithm goes untill there are no bits left. 
+    So therefore the algorithm will be O(n) for n number of 
+    bits for a,b.
 
     \end{document}
