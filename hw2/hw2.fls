@@ -103,6 +103,14 @@ INPUT ./hash-eps-converted-to.pdf
 INPUT ./hash-eps-converted-to.pdf
 INPUT ./hash-eps-converted-to.pdf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT ./preBalanced.eps
+INPUT ./preBalanced.eps
+INPUT ./preBalanced.eps
+INPUT ./preBalanced.eps
+INPUT ./preBalanced-eps-converted-to.pdf
+INPUT ./preBalanced-eps-converted-to.pdf
+INPUT ./preBalanced-eps-converted-to.pdf
+INPUT ./preBalanced-eps-converted-to.pdf
 INPUT hw2.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb

@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1506488535 "/home/shane/coms311/hw2/hw2.tex" "hw2.pdf" "hw2" 1506488535
+["pdflatex"] 1506530416 "/home/shane/coms311/hw2/hw2.tex" "hw2.pdf" "hw2" 1506530417
   "/etc/texmf/web2c/texmf.cnf" 1504055715 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/shane/coms311/hw2/hw2.tex" 1506488535 4405 8e5b9e575362ceb2f6a7677f9e2d1d9b ""
+  "/home/shane/coms311/hw2/hw2.tex" 1506530416 4552 3637ee6405b474313f37f434789d0bef ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -63,11 +63,13 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1504055800 3822874 3e701c31761e215abc80c59bec5f5c21 ""
   "hash-eps-converted-to.pdf" 1506475599 5043 b135fa867e7c67b26a548557a71ca270 ""
   "hash.eps" 1506475571 8904 dd541dfcd95a769d69d7b1e575db3a18 ""
-  "hw2.aux" 1506488535 8 a94a2480d3289e625eea47cd1b285758 ""
-  "hw2.tex" 1506488535 4405 8e5b9e575362ceb2f6a7677f9e2d1d9b ""
+  "hw2.aux" 1506530417 8 a94a2480d3289e625eea47cd1b285758 ""
+  "hw2.tex" 1506530416 4552 3637ee6405b474313f37f434789d0bef ""
+  "preBalanced-eps-converted-to.pdf" 1506530417 5160 feab6019fe281e0008ef9480beb86877 ""
+  "preBalanced.eps" 1506530390 6452 a43f040609eda00f21d21832f5e411a0 ""
   "unbalanced-eps-converted-to.pdf" 1506475668 5605 dea448d810a91ef6d5427ff248ff1ab7 ""
   "unbalanced.eps" 1506462014 7373 e340bfc1075690ed8cad4bd47af47de4 ""
   (generated)
+  "hw2.aux"
   "hw2.pdf"
   "hw2.log"
-  "hw2.aux"
