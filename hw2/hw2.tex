@@ -122,5 +122,101 @@
             \includegraphics[scale=.7]{./preBalanced.eps}
         \end{figure}
 
+        $ \newline \newline $
+        Suppose that tree C has a height of $ h^{'} $, E and F has a height of $ h $ and G has a height of 
+        $ h^{''} $. B has a balance factor of -1 so $ ( h^{'} + 1 ) - (h + 2) = -1 $ so $ h^{'} = h $.
+        A has a balance factor of 2 so that means that $ (h + 3) - (h^{''} + 1) = 3 $ so $ h = h^{''} $.
+        $ \newline \newline $
+        So because the D is less than a and greater than B we will rotate the D.
+        
+        \begin{figure}[!htb]
+            \includegraphics[scale=.7]{./preBalanced2.eps}
+        \end{figure}
+
+        $ \newline \newline $
+
+        This tree is still not balanced. So we will rotate a subtree to get.
+
+        \begin{figure}[!htb]
+            \includegraphics[scale=.7]{./preBalanced3.eps}
+        \end{figure}     
+
+        $ \newline $
+
+        The balance factor for D,B,A are 0 each. It is a perfectly balanced tree.
+
+        $ \newline $
+
+        3. (a) In order to do this can just simply sort each element with merge sort and then insert them
+        into the tree. This would mean the root would be the smallest value and the leaf node would be
+        the largest value. Every number would be greater than the next so the node that holds $ a_{n} $ 
+        $ a_{n+1} $ would always be the right child for a natural number n that is less than the length 
+        of numbers in the list. The run time of the algorithm would be be the for loop plus the merge sort
+        and we know that merge sort has a time of $ O(n log(n)) $ so the runtime is
+        $ n log(n) + n $ = $ O(n log(n)) $.
+
+        \begin{verbatim}
+        function createSpecialTree(List list) {
+            list = mergeSort(list)
+            Tree t
+            for(i = 0; i<list.length;i++) {
+                element = list.get(i)
+                t.add(element)
+            }
+        }
+
+
+        function mergeSort(List m) {
+            if (length of m ≤ 1 then) {
+                return m
+            }
+            
+            right = []
+            left = []
+
+            for(i = 0; i < m.length; i++) {
+                x = m.get(i)
+                if i >= (m.length)/2 then
+                    right.add(x)
+                else
+                    left.add(x)
+            }
+            right = merge_sort(right)
+            left = merge_sort(left)
+            return merge(left, right)
+
+        }
+
+        function merge(left, right) {
+            mergedList = []
+
+            while(!left.isEmpty() && !right.isEmpty()) {
+                if (first(left) ≤ first(right)) {
+                    append first(left) to mergedList
+                    left = rest(left)
+                } else {
+                    mergedList.append(first(right))
+                    right = rest(right)
+                }
+            }
+
+            while(!left.isEmpty()) {
+                mergedList.append(first(left))
+                left = rest(left)
+            }   
+            while(!right.isEmpty()) {
+                mergedList.append(first(right))
+                right = rest(right)
+            }
+                
+            return mergedList
+            }
+        }
+    
+        \end{verbatim}
+
+        $ \newline $
+        
+        (b)
 
     \end{document}
