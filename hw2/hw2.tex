@@ -136,7 +136,7 @@
         $ \newline \newline $
 
         This tree is still not balanced. So we will rotate a subtree to get.
-
+ 
         \begin{figure}[!htb]
             \includegraphics[scale=.7]{./preBalanced3.eps}
         \end{figure}     
@@ -147,76 +147,131 @@
 
         $ \newline $
 
-        3. (a) In order to do this can just simply sort each element with merge sort and then insert them
-        into the tree. This would mean the root would be the smallest value and the leaf node would be
-        the largest value. Every number would be greater than the next so the node that holds $ a_{n} $ 
-        $ a_{n+1} $ would always be the right child for a natural number n that is less than the length 
-        of numbers in the list. The run time of the algorithm would be be the for loop plus the merge sort
-        and we know that merge sort has a time of $ O(n log(n)) $ so the runtime is
-        $ n log(n) + n $ = $ O(n log(n)) $.
+        3. In order to do this I will create a tree of the right size. Since $ 2^{h} = l $ where the h is 
+        the height of the tree and l is the number of leaves .I just need to create a tree of that size and then
+        insert the values into the leaf nodes. $ 2^{h + 1} - 1 $ also equals the number of nodes in the tree.  
 
         \begin{verbatim}
-        function createSpecialTree(List list) {
-            list = mergeSort(list)
-            Tree t
-            for(i = 0; i<list.length;i++) {
-                element = list.get(i)
-                t.add(element)
+        
+        Node {
+            value = 0,
+            Node parent,
+            Node leftChild,
+            Node rightChild,
+        }
+
+        Tree {
+            Node root,
+            List leafNodes,
+        }
+
+        function createTree(List list) {
+            Tree tree
+            tree.root
+            Node root
+            root.parent = null
+            tree.root = root
+            height = log2(list.length)
+            List leafNodes = [] // empty list that will hold nodes
+            tree.leafNodes = leafNodes
+            addLayerToTree(root, 0, height, leafNodes)
+            addValuesToLeaves(list, leafNodes)
+            return tree
+        }
+
+        function addLayerToTree(Node n, level, height,List leafs) {
+            if(level != height) {
+                Node left
+                Node right
+                n.leftChild = left
+                n.rightChild = right
+                addLayerToTree(n.leftChild, level + 1, height)
+                addLayerToTree(n.rightChild, level + 1, height)
+            } else {
+                leafs.add(n)
             }
         }
 
-
-        function mergeSort(List m) {
-            if (length of m ≤ 1 then) {
-                return m
-            }
-            
-            right = []
-            left = []
-
-            for(i = 0; i < m.length; i++) {
-                x = m.get(i)
-                if i >= (m.length)/2 then
-                    right.add(x)
-                else
-                    left.add(x)
-            }
-            right = merge_sort(right)
-            left = merge_sort(left)
-            return merge(left, right)
-
-        }
-
-        function merge(left, right) {
-            mergedList = []
-
-            while(!left.isEmpty() && !right.isEmpty()) {
-                if (first(left) ≤ first(right)) {
-                    append first(left) to mergedList
-                    left = rest(left)
-                } else {
-                    mergedList.append(first(right))
-                    right = rest(right)
-                }
-            }
-
-            while(!left.isEmpty()) {
-                mergedList.append(first(left))
-                left = rest(left)
-            }   
-            while(!right.isEmpty()) {
-                mergedList.append(first(right))
-                right = rest(right)
-            }
-                
-            return mergedList
+        function addValuesToLeaves(List values,List nodes) {
+            for(int x=0;x<values.length;x++) {
+                Node node = nodes.get(x)
+                value = values.get(x)
+                node.value = value
             }
         }
-    
+
         \end{verbatim}
+
+        This algorithm creates a binary tree to the correct height it would need to be for there to be at least a single leaf node 
+        node per value. Because of the order of recursion we know the list of nodes that is given to addValuesToLeaves() will
+        be in order from left to right. To determine the runtime of the algorithm we first observe that the atomic lines
+        dont matter so we will focus on the two functions. addValuesToLeaves() is $ O(n) $ if n was equal to the number 
+        of items in the list. Now we will look at addLayerToTree, it is a recursive function so we must observe how many iterations
+        it would be called in terms of n before it reaches the base case. The function goes untill the level != height. 
+        The height $ log_{2}(n) = h $.The level increases by 1 every recursive call so this function is called  $ log_{2}(n) + 1 $ times.
+        So the runtime of the whole algorithm is $ n + log_{2}(n) + 1 = O(n) $.
 
         $ \newline $
         
-        (b)
+        (b) For this problem we will use a binary search tree but then store the sum in its parent nodes. So we will
+        modify the data structure in the first part. We need a function to assign the sum values to the non leaf nodes.
+
+
+        $ \newline $
+
+        \begin{verbatim}
+        
+        // new function
+        function assignSums(Node n) {
+            if(n.parent !=null) {
+                n.parent.value += n.value
+                assignSums(n.parent)
+            }
+        }
+
+        // modify this function
+
+        function createTree(List list) {
+            Tree tree
+            tree.root
+            Node root
+            root.parent = null
+            tree.root = root
+            height = log2(list.length)
+            List leafNodes = [] // empty list that will hold nodes
+            addLayerToTree(root, 0, height, leafNodes)
+            addValuesToLeaves(list, leafNodes)
+            for(int x=0;x<leafNodes.length;x++) {
+                assignSums(leafNodes.get(x))
+            }
+            return tree
+        }
+
+        // one of the required functions 
+        function increment(i , val) {
+            Tree t // the tree the algorithm is applied to
+            recursiveIncrament(t.leafNodes.get(i), val)
+        }
+
+        function recursiveIncrament(Node node, value) {
+            node.value += value
+            if(node.parent != null) {
+                recursiveIncrament(node.parent, value)
+            }
+        }
+
+        SS() {
+            Tree t // the tree the algorithm is applied to
+            return t.root.value
+        }
+
+        \end{verbatim}
+
+        The datastructure is a tree structure that the leaf nodes hold the values and the shared parents are the sum of each of its
+        child nodes. Similar to a fibonacci tree. The root node therefore holds the sum for all values in the tree. 
+        The time bounds for SS() = $ O(1) $ and increment(i, val) adds a value to the leaf node and then recursively
+        travels up the tree untill it reaches the root of the tree. The height of the tree is the log of the number of leaf nodes
+        so we know if n represents the number of leaf nodes that it would have take $ log(n) $ steps to perform recursiveIncrament so 
+        therefore increment = $ O(log(n)) $.
 
     \end{document}
