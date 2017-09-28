@@ -188,7 +188,7 @@
                 addLayerToTree(n.leftChild, level + 1, height)
                 addLayerToTree(n.rightChild, level + 1, height)
             } else {
-                leafs.add(n)
+                leafs.apend(n)
             }
         }
 
@@ -276,184 +276,153 @@
 
         $ \newline \newline $
 
-        4. This can be accomplished with a Red and Black binary search tree.
-
+        4. This can be accomplished with a contigious unsorted array and a hashset with references to the
+        inserted data input into D.To add we can just add the element to the end and if it runs out of space we will exponentialy increase the array size
+        so that its unlikely that this will occure. We will do the same with the hashset as well. To add we will simply append a node to the end of the list
+        and add a reference to the same node in the hashset. This would only take $ O(1) $. When we search and delete we will use a quickselect algorithm 
+        to get the index of the node that is the kth largest element in the array. Quick select on average runs at $ log(n) $ and when we get the value to 
+        delete it from the hashset it should only be $ O(1) $. Once that is complete we just need to be able to search to see if somthing exists in the data structure. For this
+        we will just need to search it via the hash so that is only $ O(1) $.
 
         \begin{verbatim}
         
-    D {
-        Node root,
-        Node lastAdded,
-        List leafNodes,
-    }
-
-    Node {
-        color,
-        value = 0,
-        quantity = 0,
-        Node parent,
-        Node leftChild = null,
-        Node rightChild = null,
-
-    }
-
-    function getBalance(Node n) {
-        return (getHeight(n.left) - getHeight(n.right));
-    }
-
-
-    function insert(D structure, val)
-    {
-        Node n
-        n.value = val
-        if(structure.root != null) {
-            n.color = RED
-            structure.root = n
-        } else {
-            Node root = structure.root
-            recursiveInsert(structure, root, n);
-            balanceTree(structure);
-            while (n.parent != null) {
-                n = n.parent
-            }
-            structure.root = n;
+        D {
+            occupied = 0 
+            size = 50
+            List list = [size]
+            List hash = [size]
         }
-    }
 
-    function remove(D structure, k) {
-        
-        recurseFindAndDelete(structure, k, structure.root)
-    }
+        Node {
+            value,
+            Node child,
+        }
 
-    function recurseFindAndDelete(D structure, k, Node n) {
-        Node root = structure.root
-        left = getHeight(root.left)
-        right = getHeight(root.right)
-
-    }
-
-    function getQuantity(Node n, height) {
-        if(n.right != null) {
-            height++
-            getHeight(n.right)
-        } else {
-            if(n.left != null) {
-                height++
-                getHeight(n.left)
+        function add(D structure, value) {
+            occupied++
+            if(occupied / size > .66) {
+                newSize = structure.size^2
+                List list = [newSize]
+                List newHash = [newSize]
+                
+                for(int x=0;x<structure.size;x++) {
+                    Node n
+                    n = structure.list.get(x)
+                    hash = hashNumber(newSize, structure.list.get(x))
+                    list.append(n)
+                    if(newHash.get(hash)) {
+                        Node parent = newHash.get(hash)
+                        parent.child = n
+                    } else {
+                        newHash.set(hash, n)
+                    }
+                } 
+                structure.size = newSize
+                structure.list = list 
+            }
+            Node n
+            n.value = value  
+            structure.list.append(n)
+            List hash = structure.hash
+            hashNum = hashNumber(structure.size, value)
+            Node searched = hash.get(hashNum)
+            if(searched != null) {
+                searched.child = n
             } else {
-                return height
+                hash.set(hashNum, n)
             }
         }
-        
-    }
 
-
-    function recursiveInsert(D structure, Node root, Node n) {
-        if (n.value < root.value)) {
-            if (root.left != null) {
-                recursiveInsert(structure, root.left, n);
-            } else {
-                root->left = n;
-            } 
-        } else {
-
-            if (root.right != null) {
-                recursiveInsert(structure, root.right, n);
-            } else {
-                root.right = n;
-            }
-        }
-        n.parent = root;
-        n.color = RED;    
-    }
-
-    function getUncleNode(Node n) {
-        Node parent = n.parent
-        Node grand = n.parent.parent
-        if(grand != null) {
-            if(grand.right == parent) {
-                return grand.left
-            } else {
-                return grand.right
-            }
-        }
-    }
-
-    function rotateLeft(D structure ,Node n) {
-        Node right = n.right
-        n.right = right.left;
-        if (right.left != null) {
-            right.left.parent = p;
-        }
-        right.parent = n.parent;
-        if (n.parent == null) {
-            structure.root = right
-        } else if(n.parent.left == p) {
-            n.parent.left = right;
-        } else {
-            n.parent.right = right;
-        }
-        right.left = n;
-        n.parent = right  
-    }
-
-    function rotateRight(D structure ,Node n) {
-        Node left = n.left;
-        n.left = left.right;
-        if (left.right != null) {
-            left.right.parent = p;
-        }
-        left.parent = n.parent;
-        if (n.parent == null) {
-            structure.root = left
-        } else if (n.parent.right == p) {
-            n.parent.right = l;
-        } else {
-            n.parent.left = l
-        } 
-        left.right = n;
-        n.parent = left;
-    }
-
-    function balanceTree(D structure) {
-        Node last = structure.lastAdded
-        if(last.parent == null) {
-            last.color = BLACK
-        } else {
-            if(last.parent.color == BLACK) {
-                return
-            } else {
-                Node uncle = getUncleNode(last)
-                if(uncle.color == RED) {
-                    last.parent.color = BLACK
-                    uncle.color = BLACK
-                    last.parent.parent.color = RED
-                    balanceTree(last.parent.parent)
+        function remove(D structure, k) {
+            List list = structure.list
+            lastIndex = structure.occupied - 1
+            index = kthLargest(structure, 0, lastIndex, k)
+            Node n = list.get(index)
+            List hash = structure.hash
+            hashN = hashNumber(structure.size, n.value)
+            Node temp = hash.get(hashN) 
+            // removes it from the hashset
+            while(true) {
+                if(temp.value == n.value) {
+                    if(temp.child != null) {
+                        hash.set(hashN, temp)
+                    } else {
+                        hash.remove(hashN)
+                    }
+                    break;
                 } else {
-                    Node parent = last.parent
-                    Node grand = last.parent.parent
-                    if(last == grand.left.right) {
-                        rotateLeft(structure, parent)
-                        last = last.left
+                    if(temp.child != null) {
+                        temp = temp.child
                     } else {
-                        if(last == grand.right.left) {
-                            rotateRight(structure, parent)
-                            last = last.right
-                        }
+                        return null
                     }
-                    if(last == parent.left) {
-                        rotateRight(structure ,grand)
-                    } else {
-                        rotateLeft(structure , grand)
-                    }
-                    parent.color = BLACK
-                    grand.color = RED
+                    
+                }
+            }
+            // remove it from the list
+            list.remove(index) 
+        }
 
+        function search(D structure, x) {
+            List hash = structure.hash
+            hash = hashNumber(structure.size, x)
+            Node chain = hash.get(hash)
+            while(true) {
+                if(chain.value == x) {
+                    return true
+                } else {
+                    chain = chain.child
+                    if(chain == null) {
+                        return false
+                    }
                 }
             }
         }
-    }
 
+        // quicksearch
+        function kthLargest(D structure, leftIndex, rightIndex, k) {
+            
+            List list = structure.list
+            largest = structure.occupied - (k - 1)
+
+
+            if (largest > 0 && largest <= rightIndex - l + 1) {
+                
+                pos = partition(structure, largest, list);
+                
+                if (pos-leftIndex == largest-1) {
+                    return pos;
+                }
+			    
+                if (pos-leftIndex > largest-1) {
+                    return kthSmallest(arr, l, pos-1, k);
+                }
+			        
+                return kthSmallest(arr, pos+1, r, largest-pos+l-1);
+	        }
+            return null
+        }
+
+        function partition(D structure, lastIndex, List list)
+        {
+            x = arr[range],
+            i = 0;
+	        for (int j = i; j <= lastIndex - 1; j++){
+		        if (arr[j] <= x) {
+			        swap(&arr[i], &arr[j]);
+			        i++;
+		        }
+	        }
+            temp = list.get(i)
+            list.set(i, list.get(lastIndex))
+            list.set(lastIndex, temp)
+	        return i;
+        }
+
+        function hashNumber(size,value) {
+            A = (sqrt(5.0)-1.0)/2.0;
+            return floor(size * (value * A - floor(value * A)));
+        }   
 
         \end{verbatim}
        
