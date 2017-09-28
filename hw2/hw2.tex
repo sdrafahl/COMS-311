@@ -274,4 +274,187 @@
         so we know if n represents the number of leaf nodes that it would have take $ log(n) $ steps to perform recursiveIncrament so 
         therefore increment = $ O(log(n)) $.
 
+        $ \newline \newline $
+
+        4. This can be accomplished with a Red and Black binary search tree.
+
+
+        \begin{verbatim}
+        
+    D {
+        Node root,
+        Node lastAdded,
+        List leafNodes,
+    }
+
+    Node {
+        color,
+        value = 0,
+        quantity = 0,
+        Node parent,
+        Node leftChild = null,
+        Node rightChild = null,
+
+    }
+
+    function getBalance(Node n) {
+        return (getHeight(n.left) - getHeight(n.right));
+    }
+
+
+    function insert(D structure, val)
+    {
+        Node n
+        n.value = val
+        if(structure.root != null) {
+            n.color = RED
+            structure.root = n
+        } else {
+            Node root = structure.root
+            recursiveInsert(structure, root, n);
+            balanceTree(structure);
+            while (n.parent != null) {
+                n = n.parent
+            }
+            structure.root = n;
+        }
+    }
+
+    function remove(D structure, k) {
+        
+        recurseFindAndDelete(structure, k, structure.root)
+    }
+
+    function recurseFindAndDelete(D structure, k, Node n) {
+        Node root = structure.root
+        left = getHeight(root.left)
+        right = getHeight(root.right)
+
+    }
+
+    function getQuantity(Node n, height) {
+        if(n.right != null) {
+            height++
+            getHeight(n.right)
+        } else {
+            if(n.left != null) {
+                height++
+                getHeight(n.left)
+            } else {
+                return height
+            }
+        }
+        
+    }
+
+
+    function recursiveInsert(D structure, Node root, Node n) {
+        if (n.value < root.value)) {
+            if (root.left != null) {
+                recursiveInsert(structure, root.left, n);
+            } else {
+                root->left = n;
+            } 
+        } else {
+
+            if (root.right != null) {
+                recursiveInsert(structure, root.right, n);
+            } else {
+                root.right = n;
+            }
+        }
+        n.parent = root;
+        n.color = RED;    
+    }
+
+    function getUncleNode(Node n) {
+        Node parent = n.parent
+        Node grand = n.parent.parent
+        if(grand != null) {
+            if(grand.right == parent) {
+                return grand.left
+            } else {
+                return grand.right
+            }
+        }
+    }
+
+    function rotateLeft(D structure ,Node n) {
+        Node right = n.right
+        n.right = right.left;
+        if (right.left != null) {
+            right.left.parent = p;
+        }
+        right.parent = n.parent;
+        if (n.parent == null) {
+            structure.root = right
+        } else if(n.parent.left == p) {
+            n.parent.left = right;
+        } else {
+            n.parent.right = right;
+        }
+        right.left = n;
+        n.parent = right  
+    }
+
+    function rotateRight(D structure ,Node n) {
+        Node left = n.left;
+        n.left = left.right;
+        if (left.right != null) {
+            left.right.parent = p;
+        }
+        left.parent = n.parent;
+        if (n.parent == null) {
+            structure.root = left
+        } else if (n.parent.right == p) {
+            n.parent.right = l;
+        } else {
+            n.parent.left = l
+        } 
+        left.right = n;
+        n.parent = left;
+    }
+
+    function balanceTree(D structure) {
+        Node last = structure.lastAdded
+        if(last.parent == null) {
+            last.color = BLACK
+        } else {
+            if(last.parent.color == BLACK) {
+                return
+            } else {
+                Node uncle = getUncleNode(last)
+                if(uncle.color == RED) {
+                    last.parent.color = BLACK
+                    uncle.color = BLACK
+                    last.parent.parent.color = RED
+                    balanceTree(last.parent.parent)
+                } else {
+                    Node parent = last.parent
+                    Node grand = last.parent.parent
+                    if(last == grand.left.right) {
+                        rotateLeft(structure, parent)
+                        last = last.left
+                    } else {
+                        if(last == grand.right.left) {
+                            rotateRight(structure, parent)
+                            last = last.right
+                        }
+                    }
+                    if(last == parent.left) {
+                        rotateRight(structure ,grand)
+                    } else {
+                        rotateLeft(structure , grand)
+                    }
+                    parent.color = BLACK
+                    grand.color = RED
+
+                }
+            }
+        }
+    }
+
+
+        \end{verbatim}
+       
     \end{document}
