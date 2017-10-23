@@ -69,6 +69,32 @@
     So now we just need to find the number of iterations. Every iteration divides n by 3 or by $ \frac{2}{3} $. So there should
     be logarithmic number of iterations. So $ T(n) = cnlog(n) $.
     $ \newline $
+    (b): First we will draw out a few iterations to find what the infinite series would be.
+    $ \newline $
+    The sum of the the function would be $ cn + \frac{cn}{5} + \frac{cn}{25} + ... $.
+    $ \newline $
+    Notice that the denominator $ 5^{i} $ where i is the iteration number. So we can write this
+    as an infinite series. 
+    $ \newline $
+    $ \sum_{i=1}^{\infty} ( \frac{cn}{5} )^{i} $. 
+    $ \newline $
+    From this we can determine that the total sum is $ \frac{5nc}{4} $.
+    This means that this function is O(n).
+    $ \newline $
+    (c): We will draw out the first few iterations again.
+    $ [n^{log_{5}(7)}]_{0} + [\frac{n^{log_{5}(7)}}{2} + \frac{n^{log_{5}(7)}}{2}]_{1} + 
+    [\frac{n^{log_{5}(7)}}{4} + \frac{n^{log_{5}(7)}}{2}]_{4} + \frac{n^{log_{5}(7)}}{2}]_{4} + 
+    \frac{n^{log_{5}(7)}}{2}]_{4} ]_{2} + .... $
+    $ \newline $
+    As we can tell this can ben reduced to 
+    $ n^{log_{5}(7)} + n^{log_{5}(7)} + n^{log_{5}(7)} + ... $ so that means 
+    we just have to find the height of the tree. 
+    $ \newline $
+    Notice the denominator's value is $ 2^{i} $ where i is value of the iteration.
+    So we know the last iteration is when $ \frac{n}{2^{i}} = 1 $ so there will be
+    $ log_{2}(n) $ iterations. 
+    So the sum is $ log_{2}(n) * n^{log_{5}(7)} $
+
     
 
     
