@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1508723962 "/home/shane/coms311/hw3/hw3.tex" "hw3.pdf" "hw3" 1508723962
+["pdflatex"] 1508735826 "/home/shane/coms311/hw3/hw3.tex" "hw3.pdf" "hw3" 1508735826
   "/etc/texmf/web2c/texmf.cnf" 1504055715 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/shane/coms311/hw3/hw3.tex" 1508723962 1184 ad847f7e83e4b2e4a368c95a6b5b45fc ""
+  "/home/shane/coms311/hw3/hw3.tex" 1508735825 1901 ffe07bff85b490dfb10af1c3e90a2b18 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -18,9 +18,12 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
   "/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1303254447 7324 11d14f318d865f420e692d4e6c9c18c3 ""
@@ -53,8 +56,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503347518 31075 dbb81bd39d798acf14cc121a151f7fe7 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1504055831 1346346 7f2b8b715a9ddb095afe3697a6ba02b5 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1504055800 3822874 3e701c31761e215abc80c59bec5f5c21 ""
-  "hw3.aux" 1508723962 8 a94a2480d3289e625eea47cd1b285758 ""
-  "hw3.tex" 1508723962 1184 ad847f7e83e4b2e4a368c95a6b5b45fc ""
+  "hw3.aux" 1508735826 8 a94a2480d3289e625eea47cd1b285758 ""
+  "hw3.tex" 1508735825 1901 ffe07bff85b490dfb10af1c3e90a2b18 ""
   "maxheap-eps-converted-to.pdf" 1508722701 5327 332553cb333a5404667e4822cf1fd58c ""
   "maxheap.eps" 1508722639 6850 dca54da2398bcfc161246101cef5e19b ""
   "removeHeap-eps-converted-to.pdf" 1508723688 5216 166a0b7a3bc25a17fb7de2fa18dfdca5 ""
