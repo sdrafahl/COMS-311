@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1509001498 "/home/shane/coms311/hw3/hw3.tex" "hw3.pdf" "hw3" 1509001499
+["pdflatex"] 1509004066 "/home/shane/coms311/hw3/hw3.tex" "hw3.pdf" "hw3" 1509004066
   "/etc/texmf/web2c/texmf.cnf" 1504055715 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/shane/coms311/hw3/hw3.tex" 1509001498 6918 a5f510520c00d9e339abfae48e75fcfe ""
+  "/home/shane/coms311/hw3/hw3.tex" 1509004066 6756 07d8d533705ef2a69063185e9c568586 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -63,8 +63,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503347518 31075 dbb81bd39d798acf14cc121a151f7fe7 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1504055831 1346346 7f2b8b715a9ddb095afe3697a6ba02b5 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1504055800 3822874 3e701c31761e215abc80c59bec5f5c21 ""
-  "hw3.aux" 1509001499 8 a94a2480d3289e625eea47cd1b285758 ""
-  "hw3.tex" 1509001498 6918 a5f510520c00d9e339abfae48e75fcfe ""
+  "hw3.aux" 1509004066 8 a94a2480d3289e625eea47cd1b285758 ""
+  "hw3.tex" 1509004066 6756 07d8d533705ef2a69063185e9c568586 ""
   "maxheap-eps-converted-to.pdf" 1508722701 5327 332553cb333a5404667e4822cf1fd58c ""
   "maxheap.eps" 1508722639 6850 dca54da2398bcfc161246101cef5e19b ""
   "removeHeap-eps-converted-to.pdf" 1508723688 5216 166a0b7a3bc25a17fb7de2fa18dfdca5 ""

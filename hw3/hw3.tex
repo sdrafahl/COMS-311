@@ -124,23 +124,27 @@
 
             Array1 = getGreatestAndSecondGreatestValue(A,start, start + floor((last-first)/2))
             Array2 = getGreatestAndSecondGreatestValue(A, start + ceil((last-first)/2), finish)
-            return merge(Array1, Array2); 
-            // The greast value will be in the 0th index of the array returned and the second
-            // greatest value will be in the 1 index of the array.
+            merge(Array1, Array2)
         }
 
         // this merges two arrays keeping the greatest value on the left side of the new array and 
         // keeping the second greatest value on the right side of the array
         function merge(Array1, Array2) {
             MergedArray[] // array that will hold the merged results 
-            if(Array1[0] > Array2[0]) {
-                MergedArray[0] = Array1[0]
-                MergedArray[1] = max(Array1[1], Array2[0])
-            } else {
-                MergedArray[0] = Array2[0]
-                MergedArray[1] = max(Array1[0], Array2[1])
-            }
+            MergedArray[0] = max(Array1[0], Array2[0])
+            temp1 = max(Array1[1], Array2[0])
+            temp2 = max(Array1[0], Array2[1])
+            second = min(temp1, temp2)
+            MergedArray[1] = second
             return MergedArray
+        }
+
+        function max(a,b) {
+            return (a + b + abs(a - b)) / 2
+        }
+
+        function min(a,b) {
+            ((a+b)-abs(a-b)/2)
         }
 
     \end{verbatim}
@@ -156,8 +160,7 @@
     We know that the height of the tree is $ log_{2}(n) $ so there are
     $ 2^{log_{2}(n)} = n $ leaf nodes. We know that there are n - 1 internal
     nodes so we simply add them together to get $ 2n - 1 $. This means there are 
-    $ 2n - 1 $ nodes. During the base case there are is an extra comparator that is used during
-    the base case. so we have to add one for every leaf node 
+    $ 2n - 1 $ nodes. So therefore there are $ 2n - 1 $ comparisons.
     $ \newline $
 
     4. The k sorted list is assentialy several different sorted lists that occupy the same 
@@ -167,3 +170,4 @@
     
 
     \end{document}
+
