@@ -149,23 +149,54 @@
 
     \end{verbatim}
 
-    Using recurrences to find the number of comparisons we know that 
-    it takes 2 comparisons each iteration. We also know it is recursively called twice per call so.
+    There is a single comparitor used in every single node. We know that the height of the tree 
+    is going to be $ \frac{n}{2} $ because the base case is 2. 
     $ \newline $
-    T(n) = 2T(n/2) + 1
+    T(n) = T(n/2) + 1
     $ \newline $
-    If we visualize a tree where the top is n and the second layer is
-    $ \frac{n}{2} $ and $ \frac{n}{2} $ and so on. 2 is added for 
-    every node so we just have to find the total numbers of nodes. 
-    We know that the height of the tree is $ log_{2}(n) $ so there are
-    $ 2^{log_{2}(n)} = n $ leaf nodes. We know that there are n - 1 internal
-    nodes so we simply add them together to get $ 2n - 1 $. This means there are 
-    $ 2n - 1 $ nodes. So therefore there are $ 2n - 1 $ comparisons.
-    $ \newline $
+    We know that that the height of the tree is $ log_{2}(n) - 1 $ and there is a 
+    sequence $ 2^{0} + 2^{1} + 2^{2} + ... + 2^{log_{2}(n)} $. $ \sum_{i=0}^{log_{2}(n) - 1}  $ = $ n - 1 $
+    so this algorithm takes n - 1 comparisons.
+
+
 
     4. The k sorted list is assentialy several different sorted lists that occupy the same 
     memmory space. These lists just need to be merged in the order that they are in and then
     whatever is left needs to be inserted into the sorted sub array.
+
+     \begin{verbatim}
+
+     // A is the array 
+     function sortKSorted(A, k, length) {
+        range = length - k 
+        if(k > range) {
+
+        } else {
+
+        }
+        
+        For i in range 
+     }
+     // N is Array given that needs to be sorted
+     // I is the array of all the k sorted values
+     // k is just keeping
+     // i is the index 
+     function mergeArrays(A[], I[], k, i, s) {
+
+     }
+
+     // this function stores elements that are not sorted
+     function storeNonSorted(A[], from, to) {
+        Temp[] // temporary array
+        x = 0
+        for(from in range(to)) {
+            temp[x] = A[from]
+        }
+        return Temp
+     }
+
+     \end{verbatim}
+
 
     
 
