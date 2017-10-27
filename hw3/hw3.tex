@@ -167,23 +167,66 @@
      \begin{verbatim}
 
      // A is the array 
+     // length is the length of the array
      function sortKSorted(A, k, length) {
-        range = length - k 
-        if(k > range) {
-
-        } else {
-
-        }
         
-        For i in range 
+        r = length - k 
+        if(k > range) {
+            U[] // unsorted array
+            Q[] // sorted array of k sorted
+            U = storeNonSorted(A, length - k + 1, k)
+            quickSort(U, 0, U.length)
+            x = 0
+            l = 0 // length of sorted elements in A
+            while(x < length) {
+                Temp[]
+                init = x // x is the index that we start at when going over the k sorted elements
+                c = 0
+                for(x in range(r)) {
+                    Temp[c] = A[x]
+                    c++
+                }
+                r += k
+                x = init + k
+                quickSort(Temp, 0, r)
+                c = 0
+                for(c in range(r)) {
+                    Q[l] = Temp[c]
+                    l++
+                }
+            }
+            mergeArrays(A, U, Q)
+            return A
+        } else { 
+            Arrays[] // array of arrays
+            x = 0
+            for(x in range(k)) {
+                Temp[] // new Array 
+                y = 0
+                c = x
+                while(y <= length) {
+                    Temp[y] = A[c]
+                    c += k
+                    y++
+                }
+                Arrays[x] = Temp 
+            }
+            A = mergMultipleArrays(Arrays, 0, Arrays.length)
+            return A
+        }
      }
-     // N is Array given that needs to be sorted
-     // I is the array of all the k sorted values
-     // k is just keeping
-     // i is the index 
-     function mergeArrays(A[], I[], k, i, s) {
+     
+    function mergMultipleArrays(Arrays[], first, last) {
+        if(last - first == 1) {
+            T[]
+            return mergeArrays(T, Arrays[first], Arrays[last])
+        }
+        A1[] = mergMultipleArrays(Arrays[], first, floor(last/2))
+        A2[] = mergMultipleArrays(Arrays[],  ceil(last/2), last)
+        T1[]
+        return mergeArrays(T1, A1, A2)
+    }
 
-     }
 
      // this function stores elements that are not sorted
      function storeNonSorted(A[], from, to) {
@@ -195,10 +238,159 @@
         return Temp
      }
 
-     \end{verbatim}
+     function mergeArrays(A, Array1, Array2) {
+        x = 0
+        first = 0
+        second = 0
+        length = max(Array1.length, Array2.length)
+        for(x in range(length)) {
+            if(second >= Array2.length || (first < Array1.length && Array1[first] > Array2[second])) {
+                A[x] = Array1[first]
+                first++
+            } else {
+                A[x] = Array2[second]
+                second++
+            }
+        }
+        return A
+     }
 
+     quickSort(arr[], low, high)
+     {
+         if (low < high)
+         {
+             /* pi is partitioning index, arr[p] is now
+                at right place */
+             pi = partition(arr, low, high);
+     
+             quickSort(arr, low, pi - 1);  // Before pi
+             quickSort(arr, pi + 1, high); // After pi
+         }
+     }
 
     
+     partition (arr[], low, high)
+     {
+         // pivot (Element to be placed at right position)
+         pivot = arr[high];  
+      
+         i = (low - 1)  // Index of smaller element
+     
+         for (j = low; j <= high- 1; j++)
+         {
+             // If current element is smaller than or
+             // equal to pivot
+             if (arr[j] <= pivot)
+             {
+                 i++;    // increment index of smaller element
+                 swap arr[i] and arr[j]
+             }
+         }
+         swap arr[i + 1] and arr[high])
+         return (i + 1)
+     }
+
+     \end{verbatim}
+
+     This algorithm has two cases.If n are all the elements
+     in the array and k is some value greater or equal to 1 and less than or equal $ n-1 $ . 
+     If k is greater than n - k there are unsorted 
+     elements. Otherwise the array is completely made from parallel arrays
+     that are merged together. If $ k \geq  (n - k) $ then there will be two
+     sets of each end of the array that are k sorted. Quicksort is used and each
+     set is of length k so it must take $ 2*k*log(k) $. The unsorted 
+     part of the array that is not k sorted is $ n - 2k $. Quicksort is used
+     on this subarray of elements so it is $ (n - 2k)log(n - 2k) $. These 
+     arrays are merged which is $ O(n) $ because both arrays in total in 
+     length n. So the runtime of this algorithm is 
+     $ O(n) + (n - 2k)log(n - 2k) + 2*k*log(k) $ or $ O(n + (n - 2k)log(n - 2k) + 2*k*log(k)) $ .
+     If $ k \leq (n - k) $ then all the values in the array are k sorted.
+     The algorithm would create $ k $ arrays. Each array is $ \frac{n}{k} $ length so it would 
+     take n time. These arrays are then recursively merged so we can view it as a tree.
+     Each layer of the tree costs n. The tree is of the height $ log_{2}(k) $. So
+     the runtime of this algorithm is $ O(n*log_{2}(k)) $ for this case.
+     
+     $ \newline $
+
+     5. Let $ A = [a_{1}, a_{2}, ... , a_{n}] $ be an array of integers.
+        Given $ 1 \leq i < j \leq n $.
+        $ \newline $
+
+        Using divide and conqure we will find the greatest max subarray. The
+        max subarray could either be in one of the divided sections or between two 
+
+        $ \newline $
+
+        \begin{verbatim}
+
+            function maxSubArray(A[], i, j) {
+                // The base case
+                if(i == j) {
+                    T[]
+                    T[0] = i
+                    T[1] = j
+                    T[2] = A[i]
+                    return T
+                }
+
+                mid = floor((i + j)/2)
+                L[] = maxSubArray(A, i, mid)
+                R[] = maxSubArray(A, mid + 1, j)
+                C[] = findMaxMid(A, i, mid, j)
+                if(L[2] >= R[2] && L[2] >= C[2]) {
+                    return L
+                } else if(R[2] >= L[2] && R[2] >= C[2]) {
+                    return R
+                } else {
+                    return C
+                }
+
+            }
+
+            function findMaxMid(A[], low, mid, high) {
+                sum1 = -1
+                sum = 0
+                i = mid
+                leftMaxIndex
+                // i decrements to low
+                for(i in range(low)) {
+                    sum += A[i]
+                    if(sum > sum1) {
+                        sum1 = sum
+                        leftMaxIndex = i
+                    }
+                }
+                rightMaxIndex
+                sum2 = -1
+                sum = 0
+                j = mid + 1
+                // incraments from j to high
+                for(j in range(high)) {
+                    sum += A[j]
+                    if(sum > sum2) {
+                        sum2 = sum
+                        rightMaxIndex = j
+                    }
+                }
+                D[] // (leftMaxIndex, rightMaxIndex, sum1 + sum2)
+                D[0] = leftMaxIndex
+                D[1] = rightMaxIndex
+                D[2] = sum1 + sum2
+                return D
+            }
+
+
+        \end{verbatim}
+
+        $ \newline $
+
+        Using recurrences to solve the runtime of this algorithm. 
+        The runtime of findMaxMid is $ O((high - low)) $ or $ O(n) $.
+        So the recurrences of maxSubArray are $ T(n) = T(n/2) + T(n/2) + O(n) $.
+        If we visualize this as a tree each layer of the tree takes n steps. 
+        The height of the tree is $ log_{2}(n) $ so the runtime of this algorithm is
+        $ O(n*log_{2}(n)) $.
+     
 
     \end{document}
 
