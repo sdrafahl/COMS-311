@@ -17,35 +17,32 @@
     \begin{document}
     \maketitle
 
-    1. 
+    1. This algorithm goes over every node in the graph and checks the neighbors of the neighbors
+     and populates a adjacency list for nodes of distance 2 from each other. After this the adjacency
+     list is then set to what the new adjacency list is used.
+
+     $ \newline $
     
     \begin{verbatim}
        
-        // Given a graph G createG2 creates the new graph
+        // Given a graph G createG2 converts G to G2 graph
         function createG2(G) {
-            G2 // The new Graph
-            Visited[] // dictionary of visited Nodes
-            foreach(G.N as N) { // N is a node from the array G.N   
-                  N.visited = true
-                  N1 = copy(N) // hard copy of N
-                  forEachNeighbor(N as Neighbor) {
-                    forEachNeighbor(Neighbor as NPrime) { // NPrime is the neighbor of the neighbor of N
-                        if(!NPrime.visited) {
-                            NewNode = copy(NPrime); // hard copy of NPrime
-                            append(N1.N, NewNode) // append NewNode to N1 agency list.
-                        }
+            foreachNode(G as N) {
+                foreachNeighbor(N as N1) {
+                    foreachNeighbor(N1 as N2) {
+                        append(N.N2, N2);
                     }
-                  }
-                  if(length(N1.N) > 0) { // If N1 is adjacent to 1 or more other nodes.
-                    append(G2.N, N1) // Appends N1 to list of nodes in graph G2.
-                  }
+                }
             }
-            return G2   
+            foreachNode(G as N) {
+                N.N = N.N2;
+            }
         }
 
         Node {
             visited // by default this is false
-            N[] // adjacency list 
+            N[] // adjacency list
+            N2[] // adjacency list for G squared 
         }
 
         Graph {
@@ -53,6 +50,41 @@
         }
 
     \end{verbatim}
+
+    $ \newline $
+
+    \begin{verbatim}
+        
+         // Given a adjacency matrix where (x, y) and x is the domain and the y is the co-domain if
+         // there is a function between different vertices to other vertices.
+         function createG2(M) { // suppose that M is a adjacency matrix.
+                M2 // new Matrix of equal size and width of M
+                x = 0
+                for(x in range(M.height)) {
+                    y = 0
+                    for(y in range(M.width)) {
+                        if(M[x][y] == 1) {
+                            a = 0
+                            for(a in range(M.width)) {
+                                if(M[y][a] == 1) {
+                                    M2[x][a] = 1
+                                }
+                            }
+                        }
+                    }
+                }
+                return M2
+         }
+ 
+     \end{verbatim}
+
+    $ \newline $
+
+    This algorithm goes over every index of the matrix which is $ O(n^{2}) $ where $ n $ 
+    is the number of vertices. If it finds a connection it has another for loop an then updates the initial row.
+    Worst case scenario this is a fully connected graph so $ O(n^{3}) $ best case the graph has no edges or connections
+    it would be $ O(n^{2}) $. 
+
      
 
     \end{document}
