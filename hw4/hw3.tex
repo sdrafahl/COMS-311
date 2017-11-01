@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+    %	options include 12pt or 11pt or 10pt
+    %	classes include article, report, book, letter, thesis
+
+    \usepackage{amsmath}
+    \usepackage{array}
+    \setlength\extrarowheight{2pt}
+    \usepackage{graphicx}
+    \usepackage{epstopdf}
+    \usepackage{graphics}
+    \graphicspath{ {/home/shanedrafahl/coms331/hw0} }
+    
+    \title{HW5}
+    \author{Shane Drafahl}
+    \date{31 October,2017}
+
+    \begin{document}
+    \maketitle
+
+    1. 
+    
+    \begin{verbatim}
+       
+        // Given a graph G createG2 creates the new graph
+        function createG2(G) {
+            G2 // The new Graph
+            Visited[] // dictionary of visited Nodes
+            foreach(G.N as N) { // N is a node from the array G.N   
+                  N.visited = true
+                  N1 = copy(N) // hard copy of N
+                  forEachNeighbor(N as Neighbor) {
+                    forEachNeighbor(Neighbor as NPrime) { // NPrime is the neighbor of the neighbor of N
+                        if(!NPrime.visited) {
+                            NewNode = copy(NPrime); // hard copy of NPrime
+                            append(N1.N, NewNode) // append NewNode to N1 agency list.
+                        }
+                    }
+                  }
+                  if(length(N1.N) > 0) { // If N1 is adjacent to 1 or more other nodes.
+                    append(G2.N, N1) // Appends N1 to list of nodes in graph G2.
+                  }
+            }
+            return G2   
+        }
+
+        Node {
+            visited // by default this is false
+            N[] // adjacency list 
+        }
+
+        Graph {
+            N[] // List of nodes 
+        }
+
+    \end{verbatim}
+     
+
+    \end{document}
+
