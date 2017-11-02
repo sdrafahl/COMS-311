@@ -143,9 +143,14 @@
          function countRightNodes(N, size) {
              if(hashNeighbors(N)) {
                 foreachNeighbor(N as N1) {
-                    if(N1.Root.visited == true) {
-                        size = size + N1.Root.quant
-                        N1.Root.visited = false // At this point visited should equal true after the first DFS so we are swapping them the other way
+                    if(N1.visited == true) {
+                        if(N1.Root.visited == true) {
+                            size = size + N1.Root.quant
+                            N1.visited = false
+                            N1.Root.visited = false // At this point visited should equal true after the first DFS so we are swapping them the other way
+                        } else {
+                            N1.visited = false
+                        }
                     } 
                     countRightNodes(N1, size)
                 }
