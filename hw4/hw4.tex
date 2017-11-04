@@ -189,16 +189,31 @@
      If the graph has a center then there should be exactly k nodes to the right of v. So Once I find
      the total number of nodes to the right I take the total number of nodes for the whole graph 
      subtract 1 and divided by 2 to get k. If the number of nodes to the right of v equal k then
-     I know the graph has a center. 
+     I know the graph has a center.
+
+     $ \newline $
+
+     If k is the center of the graph then it cannot be part of the TO or FROM set so 
+     k cannot have a path from k to k. Meaning k is not in a cycle. So if we found
+     all the strongly connected components k would be in a strongly component with itself.
+     So if we use Kosaraju's algorithm we will find all the strongly connected components. 
+     This algorithm stores a list of strongly connected components with a single node. 
+     I then use DFS on each of these nodes to find the quantity of nodes and subtract 1 
+     to only find the quantity of vertices and not the center vertice adjacent to the node. If the node
+     is the root of a tree and it finds the number of nodes under the root is equal to k
+     then the root is the center of the graph. If it is k that means there must be k 
+     vertices that are connected to the center vertice with no path to them. 
 
      $ \newline $
 
      Kosaraju's algorithm runs in linear time so $ O(n + E) $. The forloop after the algorithm runs through
      every strongly connected component. Worst case every node could be strongly connected so it would 
      be essentialy a linked list. In this case worst case be k iterations. So it would be 
-     $ O(n + E + \frac{n - 1}{2}) $ or $ O(n + E) $.
+     $ O(n + E + \frac{(n^{2}+n)}{2}) $ or $ O(n^{2} + E) $ worst case. Best case if there is only one
+     strongly connected component then $ O(n + E) $. For every case $ O(n + E + f) $ if f is the number of 
+     strongly connected nodes.
 
-     $ \newline $
+     $ \newline \newline $
 
      3. Is there a vertex $ u \in V $ such if we perform DFS on G starting at $ u $ , the vertex $ v $
      will be a leaf node in the resulting DFS tree?
@@ -245,9 +260,22 @@
  
      \end{verbatim}
 
+     $ \newline $
+
      This algorithm is correct because we know that a leaf node cannot be a bridge node. A leaf node is one where 
-     when search is used on the node it cannot find any more adjacent Nodes that have not been visited before. The graph
-     is connected so we can pick any arbitrary node or vertice. 
+     when search is used on the node it cannot find any more adjacent Nodes that have not been visited before. 
+     The first line in NonBridgeDFS picks an arbitrary node in the graph. I then use search() on that node.
+     In search() N is marked as visited and a boolean leaf is set to true. Then there is a forloop 
+     over all the neighbors of the node. If it finds a single adjacent node that has not been visited before
+     it changes leaf to false. If there is a adjacent node that has not been visited search is used on the
+     adjacent node. Essentialy this is DFS. search will reach the base case on either side and not the bridge vertice. 
+     If we use proof by contradiction and assume search will reach the base case on the bridge vertice 
+     and return the vertice. This would mean that when visit() is called on the bridge all adjacent 
+     vertices are visited. This would mean that there would be another connection between two sets vertices.
+     This is a contradiction because that would mean there would be no bridge vertice because if we removed
+     the assumed bridge vertice the graph would not become disconected. So therefore this algorithm will
+     return any vertice that is not a bridge vertice. 
+     
 
      $ \newline $
 
