@@ -39,7 +39,61 @@
 
     $ \newline $
 
-    2. 
+    2. This algorithm produces a minimum spanning tree. I will prove this by first writing
+    a proof to show it will produce a minum spanning tree.
+
+    $ \newline $
+
+    This algorithm starts from the edge with the greatest weight and removes the
+    edge if it does not disconect the edge. If we assume by proof of contradiction
+    that this algorithm does not produce a tree so it must produce cycles in a graph.
+    That means it it cannot remove an edge because it would disconnect the graph.
+    This is a contradition because a cycle has more than one path so it should be able
+    to remove the edge. Therefore this algorithm will always produce a tree.
+
+    $ \newline $
+
+    Using induction we can prove that the algorithm will produce the minium spanning tree.
+    $ \newline $
+    Basis: Suppose that there is a set $ F $ of edges currently in the graph. The minimum
+    spanning tree must be a subset of $ F $ in the beginning because $ F $ contains all
+    edges at this point.
+    $ \newline $
+    Inductive Hyptothesis: The minimum spanning tree $ T $ is a subset of $ F $.
+    $ \newline $
+    Induction: We want to show that any edge the algorithm removes by the end of an iteration $ T $,
+    the minimum spanding tree, is a subset of $ F $. When the algorithm removes and edge $ c $ we will consider
+    the cases.
+    $ \newline $
+    case 1: $ c \notin T $, for this case $ T $ is still a subset of $ F $.
+    $ \newline $
+    case 2:  $ c \in T $, for this case removing $ c $ would disconnect $ T $ because $ T $ is a tree.
+    The graph must be connected after removing $ c $ so there must exist a cycle before removing $ c $ from $ F $.
+    We will call this other cycle not in $ T $ $ f $.
+    The algorithm removes the greatest to the smallest weights so we can say that the minimum spaning tree
+    is $ T^{''} = T - e + f $ which is a supbset of $ F $. $ T^{'} $ does is a spanning tree because $ e $ is
+    removed so the cycle with $ e $ and $ f $ does not exist. The weight of $ e $ equals $ f $ because
+    if $ e $ has a greater weight this would be a contradition because $ T $ is a miniumum spanding tree.
+    If the opposite were true and $ f $ was greater than $ e $ the algorithm goes throug decending algorithm
+    so its impossible for the algorithm to reach two edges that have a cycle with each other and process the
+    one with the minium weight. So therefore the weights must equal and thus $ weight(T^{'}) $ = $ weight(T) $.
+    Therefore by each iteration the minimum spanding tree is a subset of the remaining edges.
+    $ \newline $
+
+    We have proved that each iteration of the algorithm the minimum spanding tree is a subset of the the set of edges
+    after each iteration. The minium spanding tree is a subset, so when the algorithm visits all the edges and the loop ends
+    the final set of edges should still have the minium spanding tree as a subset. Therefore the final set of edges
+    is the minimum spanding tree. Therefore the algorithm produces the minimum spanding tree.
+
+    $ \newline $
+
+    3. In a directed graph, if a vertex can reach all other vertices, then we will call it a
+    dominating vertex. Design an algorithm to find the dominating vertices in a graph.
+    Prove its correctness and explain the time complexity of your algorithm.
+
+    $ \newline $
+
+    
 
 
 
