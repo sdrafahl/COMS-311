@@ -93,8 +93,79 @@
 
     $ \newline $
 
-    
+    My approach to this problem will be to first convert the graph problem into
+    a spanning tree via prims algorithm. This will prevent cycles in the graph.
+    Once this is done I can search via DFS from every node in the graph to find
+    how many nodes it can find a path to. It will store the max depth it finds
+    in each direction for efficiency.
 
+    $ \newline $
 
+    \begin{verbatim}
+
+       G {
+            nodes[] // array of Nodes
+       }
+
+       N {
+            neighbors[] // adjacent nodes
+            depth := 1
+            searched := false
+       }
+
+       algorithm(Graph g) {
+            g = primsAlgorithm(g) // creates instance of minimum spanning tree and sets the pointer g to be its pointer
+            foreach (Node n in g.nodes) { // iterates over all nodes in the graph
+                if(!n.visited) {
+                    depth := findDepth(n)
+                    if(depth == length(g.nodes)) {
+                        return g
+                    }
+                }
+            }
+       }
+
+       findDepth(Node n) {
+            if(n.visited) {
+                return n.distance
+            }
+            n.visited = true
+            foreach (Node n1 in n.neighbors) {
+                n.depth += findDepth(n1)
+            }
+            return n.depth
+       }
+
+    \end{verbatim}
+
+    $ \newline $
+
+    First I will prove findDepth. findDepth is a DFS based algorithm.
+    For each node it is called uppon changes its value to visited so it cannot
+    visit nodes it has visited before. It recursivly finds the depth of each
+    adjacent node and sums them together to find the depth. If it has no
+    adjacent nodes then it should return one because that is the default. So
+    when the algorithm is called on a node that has adjacent nodes that are all
+    leaves they would return 1 each meaning its depth would be the number
+    of leaf nodes plus one. The plus one being itself. The node that called
+    this node then would add that value to its own and its neighbors as well.
+    This algorithm cannot get stuck in a cycle either where its depth
+    would be in a cycle dependency because prims algorithm is used on the graph
+    resulting in a spanning tree that would eliminate any cycles in the graph.
+    findDepth is used in the algorithm. The aglorithm visits each node
+    that has not been visited and uses findDepth or in other words
+    uses DFS on every node to find its depth. If the depth of a single
+    nodes equals the number of nodes or the length of the array of nodes
+    in the graph that would mean there is a path between that node and every
+    other node in the graph.
+
+    $ \newline $
+
+    This algorithm first uses prims algorithm which is $ O(V + E) $. After this
+    this is uses a DFS based algorithm on all Nodes that are not visited. I would
+    argue this algorithm runs in $ O(V + E) $. Each vertice is only visited once
+    in the algorithm. Every Node that is visited by findDepth is marked with
+    a visited boolean so it does not need to be processed again. So therefore
+    the algorithm grow linearly with its input size. 
 
     \end{document}
