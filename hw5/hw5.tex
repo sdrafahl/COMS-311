@@ -210,7 +210,8 @@
 
                 sums[n+1][sum/2+1] // boolean array for possible sums
 
-                // obviously the null set is a subset of all sets so there would always be a way to sum 0
+                // obviously the null set is a subset of all sets
+                // so there would always be a way to sum 0
                 for(x:=0;x<n+1;x++) {
                     sums[x][0] = true
                 }
@@ -245,7 +246,104 @@
 
     $ \newline $
 
+    5. (a). To write a greedy algorithm I just need to create an algorithm that
+    will consider only one step at a time. The shortest path with be a direct
+    path diagonal from the starting location. We will assume that each cell
+    in the grid/2D array contains a Node that contains the number of diamonds.
+    It costs 3 to move bottom right and 2 to the right and down so it costs a
+    single additional weight to move one to the right and then down. So
+    for each additional move to the right vs down it would need to find a diamond
+    with a value with at least 1.
 
+    $ \newline $
+
+    \begin{verbatim}
+
+        Node {
+            diamonds // if a diamond is in the node it can range in value from 1-10, 0 if no diamond
+        }
+
+        function greedyAlgo(grid) {
+
+            Node n := grid[1][1] // Pointer to a node
+            path[] // path of nodes
+            append(path, n) // append n to the path
+            i:= 1
+            j:= 1
+            M,N:= size(grid) // gets the dimensions of the rectangular graph
+            Node dest := grid[M-1][N-1] // The destination Node
+
+            while(dest != n) { // while n has not reached the end of the rectangle
+
+                if(j == N) { // Reached the edge of the rectangle
+                    i++
+                    n = grid[i][j]
+                    append(path, n)
+
+                } else if(i == M) { // Reached the bottom edge of the rectangle
+                    j++
+                    n = grid[i][j]
+                    append(path, n)
+                } else {
+                    right:= 1 - grid[i][j+1].diamonds
+                    bottomRight := 0 - grid[i+1][j+1].diamonds
+                    bottom:= 1 - grid[i][j+1].diamonds
+
+                    min:= min(right, bottomRight, bottom)
+
+                    if(right == min) {
+                        j++
+                        n = grid[i][j]
+                        append(path, n)
+                    }
+
+                    if(bottomRight == min) {
+                        j++
+                        i++
+                        n = grid[i][j]
+                        append(path, n)
+                    }
+
+                    if(bottom == min) {
+                        i++
+                        n = grid[i][j]
+                        append(path, n)
+                    }
+                }
+            }
+            return path
+        }
+
+    \end{verbatim}
+
+    This is a greedy algorithm so it optomizes locally for each step.
+    It checks the bottom, right ,and bottom right nodes and checks which has
+    the smallest difference. If there were no diamonds it would take the direct
+    diagonal path from the initial start (1,1) to (M,N). For every node in the
+    path it takes to the right or down its equivelant to 1 extra distance comared
+    to moving down right. However if there is at least diamond it would be equal
+    or greater than to move to the right or down. However since this is a greedy
+    algorithm it can only make local optimizations. If the diamonds are not
+    adjacent to the diagonal path it may not find the diamonds. For example
+    for a graph like this.
+
+    $ \newline $
+
+    \begin{figure}[!htb]
+        \includegraphics[scale=.7]{./example.eps}
+    \end{figure}
+
+    $ \newline $
+
+    This graph only has diamonds in the top right cell. If the
+    algorithm was applied it would return a diagonal path with a
+    total weight of 9. However if the path is from the initial node
+    and went right to get the diamonds and then down to the bottom right node
+    it would cost 12 weight but it would pick up 10 diamonds meaning a total
+    difference of 2 compared to the 9 the algorithm produces. Local
+    optimization in this case does not produce global optimization.
+
+    $ \newline $
 
 
 
