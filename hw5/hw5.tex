@@ -166,6 +166,87 @@
     argue this algorithm runs in $ O(V + E) $. Each vertice is only visited once
     in the algorithm. Every Node that is visited by findDepth is marked with
     a visited boolean so it does not need to be processed again. So therefore
-    the algorithm grow linearly with its input size. 
+    the algorithm grow linearly with its input size.
+
+    $ \newline $
+
+    4. To solve this problem I will create a 2D array that will hold
+    such for that arr[x][y] x is the sum for the corresponding subset
+    $ A_{1}, ... A_{j} $ such that arr[x][y] will hold a true or false if
+    there is a possibility for the specified sum. I can then create the
+    2D array and build it from the ground up.
+
+    $ \newline $
+
+    We will say hasSubSet(A, n) is a recurance that determins if there
+    is a subset with half the sum of A as its sum .
+    The n is the range of the subset, for example if n = 1 then its asking
+    if there if the first element in A equals half the sum of A.
+    There are two cases or two sub problems. The first is
+    if the subset hasSubSet(A, n-1) is true then hasSubSet(A, n)
+    would also be true. The other case is when in consideration of the
+    n'th element of the subset. For this case we need to check that
+    if we take val = sum(A)/2 - A[n] we need to determine if val
+    can be summed up. Also if hasSubSet(A, n-1) is true like in the
+    first case then we can determine that hasSubset(A, n) is true when
+    considering the last element. If either case is true then hasSubSet(A, n)
+    is true. The runtime of such recurance is $ O(2^{n}) $ worst case.
+
+    $ \newline $
+
+    \begin{verbatim}
+
+       function algorithm(A[]) { // given an array of numbers
+            length := length(A) // number of elements
+            sum:= 0
+
+            foreach(int x in A) {
+                sum += x // calculating the sum
+            }
+
+            // Since A is assumed to only have natural numbers
+            // there cannot be a set of half the value if it is odd
+            if(sum % 2 == 0) {
+
+                sums[n+1][sum/2+1] // boolean array for possible sums
+
+                // obviously the null set is a subset of all sets so there would always be a way to sum 0
+                for(x:=0;x<n+1;x++) {
+                    sums[x][0] = true
+                }
+
+                // Process the top row except for (0,0)
+                sums[0][A[0]] = true
+
+                for(x:=1;x<n+1;x++) {
+                    for(y:=1;y<m/2+1;y++) {
+                        val:= A[x] // corresponding value
+                        if(y < val) {
+                            sums[x][y] = sums[x-1][y]
+                        } else {
+                            sums[x][y] = sums[x-1][y-val] || sums[x-1][y]
+                        }
+                    }
+                }
+
+                return sums[n][sum/2]
+
+            } else {
+                return false
+            }
+       }
+
+    \end{verbatim}
+
+    This algorithm at first requires linear computations such as the sum of
+    numbers in A. Each index in the 2D boolean array is a sub problem. It takes constant
+    time to process each sub problem. The 2D array is the size $ (sum(A)/2) * length(A)) $
+    or if we say there are n elements and $ half:= sum(A)/2 $ then it runs in $ O(n * half) $.
+
+    $ \newline $
+
+
+
+
 
     \end{document}
