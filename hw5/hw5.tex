@@ -345,6 +345,82 @@
 
     $ \newline $
 
+    b. To write a path finding algorithm using dynamic programming I will implement
+    Floyd-Warshall's algorithm.
+
+    $ \newline $
+
+    \begin{verbatim}
+
+        // the x and y coordinates are set to whatever the Node is located in the grid
+
+        Node {
+            diamonds // if a diamond is in the node it can range in value from 1-10, 0 if no diamond
+            distance := 0
+            // coordinates
+            x
+            y
+        }
+
+        function floydWarshall(grid) {
+            M,N:= size(grid) // gets the dimensions of the rectangular graph
+            // 4D array of distances that correspond to distance between nodes
+            // initialized to 0 for each value
+            distances[M][N][M][N]
+
+            nodes[M][N][M][N]
+
+            for(x:=0;x<M;x++) {
+                for(y:=0;y<N;y++) {
+                    distances[x][y][x][y+1] = 2 - grid[x][y+1].diamonds // right
+                    distances[x][y][x+1][y+1] = 3 - grid[x+1][y+1].diamonds // bottom right
+                    distances[x][y][x+1][y] = 2 - grid[x+1][y].diamonds  // bottom
+
+                    nodes[x][y][x][y+1] = grid[x][y+1]
+                    nodes[x][y][x+1][y+1] = grid[x+1][y+1]
+                    nodes[x][y][x+1][y] = grid[x+1][y]
+
+                }
+            }
+
+            for(y:=0;y<M;y++) {
+                for(z:=0;z<N;z++) {
+
+                    for(a:=0;a<M;a++) {
+                        for(b:=0;b<N;b++) {
+
+                            for(c:=0;c<M;c++) {
+                                for(d:=0;d<N;d++) {
+
+                                    if(distances[a][b][c][d] > distances[a][b][y][z] + distance[y][z][c][d]) {
+                                        distances[a][b][c][d] = distances[a][b][y][z] + distances[y][z][c][d]
+                                        nodes[a][b][c][d] = nodes[a][b][y][z]
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Node from := grid[0][0]
+            Node to := grid[M][N]
+            path[] // path of nodes
+            append(path, from)
+            while(from != to) {
+                from = nodes[from.x][from.y][M][N]
+                append(path, from)
+            }
+
+            return path
+        }
+
+    \end{verbatim}
+
+    The runtime of the Floyd-Warshall algorithm is $ O(n^{3}) $
+    For this case in particular it is $ O((MN)^{3}) $ to
+    go through the distance matrix.   
 
 
     \end{document}
